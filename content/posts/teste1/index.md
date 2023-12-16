@@ -14,9 +14,9 @@ format: hugo-md
 For a demonstration of a line plot on a polar axis, see **?@fig-polar**.
 
 ``` r
-print(1 + 1) + 1
+print(1 + 1) + 10
 ```
 
     [1] 2
 
-    [1] 3
+    [1] 12

@@ -16,5 +16,5 @@ For a demonstration of a line plot on a polar axis, see @fig-polar.
 ```{r}
 #| label: fig-polar
 #| fig-cap: "A line plot on a polar axis"
-print(1 + 1) + 1
+print(1 + 1) + 10
 ```
