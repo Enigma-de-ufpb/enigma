@@ -4,7 +4,6 @@ date: "2012-04-06"
 categories:
   - Matplotlib
   - Coordinates
-format: hugo-md
 description: "All the front matter variables available in Blowfish."
 ---
 
