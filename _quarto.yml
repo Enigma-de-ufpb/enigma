@@ -4,6 +4,7 @@ project:
 format:
   hugo-md:
     code-fold: true
+    html-math-method: katex
 
 execute:
   warning: false

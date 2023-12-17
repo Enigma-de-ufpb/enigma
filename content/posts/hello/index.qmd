@@ -1,6 +1,6 @@
 ---
-title: Hello, Quarto
-date: "2012-04-06"
+title: Emoji
+date: "2023-12-17"
 categories:
   - Matplotlib
   - Coordinates
@@ -15,4 +15,23 @@ For a demonstration of a line plot on a polar axis, see @fig-polar.
 #| label: fig-polar
 #| fig-cap: "A line plot on a polar axis" #
 print(1 + 1) + 5
+```
+
+
+{{< katex >}}
+
+$$
+ \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+$$
+
+Um texto $x^2$ qualquer com uma eq. $\int_0^1$
+
+
+```{r}
+#| echo: false
+
+hist(rnorm(10))
+
+
+
 ```
