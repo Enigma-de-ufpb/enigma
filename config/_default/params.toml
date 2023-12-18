@@ -12,7 +12,7 @@ autoSwitchAppearance = true
 enableSearch = true
 enableCodeCopy = true
 
-#mainSections = ["section1", "section2"]
+mainSections = ["posts"]
 #robots = ""
 
 disableImageOptimization = true
@@ -23,10 +23,10 @@ defaultFeaturedImage = "/img/nova_logo.jpg" # used as default for featured image
 
 highlightCurrentMenuArea = true
 smartTOC = true
-smartTOCHideUnfocusedChildren = true
+smartTOCHideUnfocusedChildren = false
 
 [header]
-  layout = "fixed-fill-blur" # valid options: basic, fixed, fixed-fill, fixed-fill-blur
+  layout = "fixed" # valid options: basic, fixed, fixed-fill, fixed-fill-blur
 
 [footer]
   showMenu = true
@@ -39,7 +39,7 @@ smartTOCHideUnfocusedChildren = true
   layout = "background" # valid options: page, profile, hero, card, background, custom
   homepageImage = "/img/background_code.jpg" # used in: hero, and card
   showRecent = true
-  showRecentItems = 2
+  showRecentItems = 3
   showMoreLink = true
   showMoreLinkDest = "/posts"
   cardView = true
@@ -76,7 +76,7 @@ smartTOCHideUnfocusedChildren = true
 
 [list]
   showHero = true
-  heroStyle = "big" # valid options: basic, big, background, thumbAndBackground
+  heroStyle = "background" # valid options: basic, big, background, thumbAndBackground
   layoutBackgroundBlur = true # only used when heroStyle equals background or thumbAndBackground
   layoutBackgroundHeaderSpace = true # only used when heroStyle equals background
   showBreadcrumbs = true
@@ -96,7 +96,7 @@ smartTOCHideUnfocusedChildren = true
 [taxonomy]
   showTermCount = true
   showHero = true
-  heroStyle = "basic" # valid options: basic, big, background, thumbAndBackground
+  heroStyle = "background" # valid options: basic, big, background, thumbAndBackground
   showBreadcrumbs = true
   showViews = true
   showLikes = true
