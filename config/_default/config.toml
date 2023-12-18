@@ -4,7 +4,7 @@
 
 
 theme = "blowfish"
-baseURL = "https://enigma_ufpb.github.io/"
+baseURL = "https://enigma-de-ufpb.github.io/"
 defaultContentLanguage = "pt-br"
 
 pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
