@@ -15,7 +15,7 @@ enableCodeCopy = true
 #mainSections = ["section1", "section2"]
 #robots = ""
 
-disableImageOptimization = false
+disableImageOptimization = true
 disableTextInHeader = false
 
 defaultBackgroundImage = "/img/background_code.jpg" # used as default for background images
@@ -67,7 +67,7 @@ smartTOCHideUnfocusedChildren = true
   invertPagination = false
   showReadingTime = true
   showTableOfContents = true
-  showRelatedContent = false
+  showRelatedContent = true
   relatedContentLimit = 3
   showTaxonomies = false
   showAuthorsBadges = true
