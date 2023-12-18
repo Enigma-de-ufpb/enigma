@@ -3,8 +3,8 @@
 # https://blowfish.page/docs/getting-started/
 
 
-#theme = "blowfish"
-baseURL = "https://enigma-de-ufpb.github.io/enigma/"
+theme = "blowfish"
+#baseURL = "https://enigma-de-ufpb.github.io/enigma/"
 defaultContentLanguage = "pt-br"
 
 pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
