@@ -3,7 +3,6 @@ title: "Série de Taylor, código espaguete e outras coisas"
 date: "2022-10-06"
 categories: [news, code, R]
 bibliography: references.bib
-draft: false
 ---
 
 {{< katex >}}

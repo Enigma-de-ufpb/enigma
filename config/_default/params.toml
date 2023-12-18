@@ -38,8 +38,8 @@ smartTOCHideUnfocusedChildren = true
 [homepage]
   layout = "background" # valid options: page, profile, hero, card, background, custom
   homepageImage = "/img/background_code.jpg" # used in: hero, and card
-  showRecent = false
-  showRecentItems = 3
+  showRecent = true
+  showRecentItems = 2
   showMoreLink = true
   showMoreLinkDest = "/posts"
   cardView = true
@@ -48,8 +48,8 @@ smartTOCHideUnfocusedChildren = true
 
 [article]
   showDate = true
-  showViews = false
-  showLikes = false
+  showViews = true
+  showLikes = true
   showDateUpdated = true
   showAuthor = true
   showHero = true
@@ -115,13 +115,13 @@ smartTOCHideUnfocusedChildren = true
   cardViewScreenWidth = true
 
 [firebase]
-  # apiKey = "XXXXXX"
-  # authDomain = "XXXXXX"
-  # projectId = "XXXXXX"
-  # storageBucket = "XXXXXX"
-  # messagingSenderId = "XXXXXX"
-  # appId = "XXXXXX"
-  # measurementId = "XXXXXX"
+  apiKey = "AIzaSyDGmj8aX6kuEu5MHeST8gEQVBo5aoBYVLo"
+  authDomain = "enigma-8221b.firebaseapp.com"
+  projectId = "enigma-8221b"
+  storageBucket = "enigma-8221b.appspot.com"
+  messagingSenderId = "405092353929"
+  appId = "1:405092353929:web:0b39eb53420f357874c358"
+  measurementId = "G-4LEQ07SJ6X"
 
 [fathomAnalytics]
   # site = "ABC12345"

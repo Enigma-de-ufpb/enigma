@@ -4,9 +4,8 @@
 
 
 #theme = "blowfish"
-#baseURL = "baseURL = "https://enigma-de-ufpb.github.io/enigma/"
+baseURL = "https://enigma-de-ufpb.github.io/enigma/"
 defaultContentLanguage = "pt-br"
-
 
 pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
 
@@ -17,7 +16,7 @@ summaryLength = 0
 buildDrafts = false
 buildFuture = false
 
-# googleAnalytics = "G-XXXXXXXXX"
+googleAnalytics = "G-4LEQ07SJ6X "
 
 [imaging]
   anchor = 'Center'
