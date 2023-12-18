@@ -1,4 +1,4 @@
-module github.com/enigma-de-ufpb/enigma
+module github.com/enigma-de-ufpb/enigma_ufpb.github.io
 
 go 1.21
 
