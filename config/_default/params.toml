@@ -115,13 +115,13 @@ smartTOCHideUnfocusedChildren = true
   cardViewScreenWidth = true
 
 [firebase]
-  apiKey = "AIzaSyDGmj8aX6kuEu5MHeST8gEQVBo5aoBYVLo"
-  authDomain = "enigma-8221b.firebaseapp.com"
-  projectId = "enigma-8221b"
-  storageBucket = "enigma-8221b.appspot.com"
-  messagingSenderId = "405092353929"
-  appId = "1:405092353929:web:0b39eb53420f357874c358"
-  measurementId = "G-4LEQ07SJ6X"
+  apiKey = "AIzaSyDvv2h09Cg_4uMgySviH8BubtX65_nBooI"
+  authDomain = "monitorandoenigma.firebaseapp.com"
+  projectId = "monitorandoenigma"
+  storageBucket = "monitorandoenigma.appspot.com"
+  messagingSenderId = "232116482980"
+  appId = "1:232116482980:web:0415df40b4180f09f78731"
+  measurementId = "G-0NN6XC0X5D"
 
 [fathomAnalytics]
   # site = "ABC12345"
