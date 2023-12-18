@@ -2,7 +2,6 @@
 title: Orientadores
 date: "2012-04-06"
 draft: false
-
 showDate : false
 showDateUpdated : false
 showHeadingAnchors : false
