@@ -27,7 +27,7 @@
 [[main]]
   name = "Orientadores"
   parent = "Sobre"
-  pageRef = "orientadores"
+  pageRef = "sobre/orientadores"
   weight = 3
 
 [[main]]

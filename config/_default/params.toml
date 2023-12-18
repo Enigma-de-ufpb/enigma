@@ -18,7 +18,7 @@ enableCodeCopy = true
 disableImageOptimization = false
 disableTextInHeader = false
 
-defaultBackgroundImage = "/img/foto_aerea_super_resolucao.png" # used as default for background images
+defaultBackgroundImage = "/img/background_code.jpg" # used as default for background images
 defaultFeaturedImage = "/img/nova_logo.jpg" # used as default for featured images in all articles
 
 highlightCurrentMenuArea = true
@@ -48,8 +48,8 @@ smartTOCHideUnfocusedChildren = true
 
 [article]
   showDate = true
-  showViews = true
-  showLikes = true
+  showViews = false
+  showLikes = false
   showDateUpdated = true
   showAuthor = true
   showHero = true
@@ -58,7 +58,7 @@ smartTOCHideUnfocusedChildren = true
   layoutBackgroundHeaderSpace = false # only used when heroStyle equals background
   showBreadcrumbs = false
   showDraftLabel = true
-  showEdit = true
+  showEdit = false
   editURL = "https://github.com/enigma-de-ufpb/enigma"
   editAppendPath = true
   seriesOpened = false
