@@ -3,7 +3,7 @@
 # https://blowfish.page/docs/getting-started/
 
 
-#theme = "blowfish"
+theme = "blowfish"
 #baseURL = "https://enigma-de-ufpb.github.io/enigma/"
 defaultContentLanguage = "pt-br"
 
