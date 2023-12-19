@@ -1,0 +1,2447 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr" class="scroll-smooth" data-default-appearance="dark"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="pt-br" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>Estimação por máxima verossimilhança em R, Julia e Python &middot; Enigma</title>
+  <meta name="title" content="Estimação por máxima verossimilhança em R, Julia e Python &middot; Enigma" />
+  
+  <meta name="description" content="Liga de programação aplicada à ciência de dados do Departamento de Estatística - DE da Universidade Federal da Paraíba - UFPB." />
+  
+  
+  
+  <link rel="canonical" href="https://enigma-de-ufpb.github.io/posts/comparando_linguagens/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.fcda2dd24956446f0a9207be647ba10edcea0fc8f1b8f383e7ffddc8bddedc3695cd5f51e3299e3d5dcac09225dc3f9ec2131f46ef66ce1609386b37be4fab0f.css"
+    integrity="sha512-/Not0klWRG8Kkge&#43;ZHuhDtzqD8jxuPOD5//dyL3e3DaVzV9R4ymePV3KwJIl3D&#43;ewhMfRu9mzhYJOGs3vk&#43;rDw==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.cd9f9776639958530668ef95bdcb135cc25d054d0602992241cd8e6b51e4329c9c85e3ee490fe231093dc89af06987d3876a7d54f4bae9c8ce03190ee528a55d.js"
+    integrity="sha512-zZ&#43;XdmOZWFMGaO&#43;VvcsTXMJdBU0GApkiQc2Oa1HkMpychePuSQ/iMQk9yJrwaYfTh2p9VPS66cjOAxkO5SilXQ=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.2203b3b3a41c69cb3f1943d59ed0d3483d3e4f5742175ec999e538fc2ba2fd5689ad8d6f933932ec1c3265d7073f1457e5426d29b3cb0d2e1ec917e506de7a9b.js"
+    integrity="sha512-IgOzs6Qcacs/GUPVntDTSD0&#43;T1dCF17JmeU4/Cui/VaJrY1vkzky7BwyZdcHPxRX5UJtKbPLDS4eyRflBt56mw==" data-copy="" data-copied=""></script>
+  
+  
+  <script src="/js/zoom.min.js"></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Estimação por máxima verossimilhança em R, Julia e Python" />
+<meta property="og:description" content="Uma breve introdução  #   Ciência de dados é, sem dúvidas, uma área de pesquisa que permeia diversas outras ciências, estando mais intimamente relacionada com as áreas de estatística e a computação." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://enigma-de-ufpb.github.io/posts/comparando_linguagens/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-09T00:00:00+00:00" /><meta property="og:site_name" content="Enigma" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Estimação por máxima verossimilhança em R, Julia e Python"/>
+<meta name="twitter:description" content="Uma breve introdução  #   Ciência de dados é, sem dúvidas, uma área de pesquisa que permeia diversas outras ciências, estando mais intimamente relacionada com as áreas de estatística e a computação."/>
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Estimação por máxima verossimilhança em R, Julia e Python",
+    "headline": "Estimação por máxima verossimilhança em R, Julia e Python",
+    
+    "abstract": "Uma breve introdução  #   Ciência de dados é, sem dúvidas, uma área de pesquisa que permeia diversas outras ciências, estando mais intimamente relacionada com as áreas de estatística e a computação.",
+    "inLanguage": "pt-br",
+    "url" : "https:\/\/enigma-de-ufpb.github.io\/posts\/comparando_linguagens\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Enigma"
+    },
+    "copyrightYear": "2022",
+    "dateCreated": "2022-09-09T00:00:00\u002b00:00",
+    "datePublished": "2022-09-09T00:00:00\u002b00:00",
+    
+    "dateModified": "2022-09-09T00:00:00\u002b00:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "4576"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="Enigma" />
+  
+  
+  
+  <link href="https://github.com/enigma-de-ufpb" rel="me" />
+  
+  
+  <link href="https://instagram.com/enigma_ufpb" rel="me" />
+  
+  
+  <link href="https://linkedin.com/in/enigma-1874562a5" rel="me" />
+  
+  
+  <link href="https://chat.whatsapp.com/IjJUQWL3qX79GVXJIdhPu8" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
+
+
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/lib/katex/katex.min.7c7c1a59e6eec00ecd485e5083f69fe14783c7d5ea52962938682e6e8df25aef9bd88411e14790c1b6f8d938bb81502336d56823f23d4c4a187aef689b0702ea.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu&#43;b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" />
+
+
+<script defer src="/lib/katex/katex.min.2d037120c479ad7bfba3e6f597cf8dd4464c7e11bb88567d1e19db2644e9e338cdaf95afb2def902a51e143c5e4546bb979bc40f2522022a7ffebf8414b2c2c8.js" integrity="sha512-LQNxIMR5rXv7o&#43;b1l8&#43;N1EZMfhG7iFZ9HhnbJkTp4zjNr5Wvst75AqUeFDxeRUa7l5vEDyUiAip//r&#43;EFLLCyA=="></script>
+
+
+<script defer src="/lib/katex/auto-render.min.e6511c3458afadbb974a54c917a45e383efdb02303964d83fdb17ff69367d6d871a53a09973ffec8c9d3525c7b8c64602e6c16a64842884ad60989a16d953fd0.js" integrity="sha512-5lEcNFivrbuXSlTJF6ReOD79sCMDlk2D/bF/9pNn1thxpToJlz/&#43;yMnTUlx7jGRgLmwWpkhCiErWCYmhbZU/0A=="
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+  
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script>
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDvv2h09Cg_4uMgySviH8BubtX65_nBooI",
+      authDomain: "AIzaSyDvv2h09Cg_4uMgySviH8BubtX65_nBooI",
+      projectId: "monitorandoenigma",
+      storageBucket: "monitorandoenigma.appspot.com",
+      messagingSenderId: "232116482980",
+      appId: "1:232116482980:web:0415df40b4180f09f78731",
+      measurementId: "G-0NN6XC0X5D"
+    };
+
+    var app = firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
+    var auth = firebase.auth();
+
+  </script>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Ir para o conteúdo principal</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">Enigma</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  href="/sobre/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="Sobres">
+      Sobre
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href=""  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Objetivos
+          </p>
+        </a>
+        
+        <a href="/sobre/orientadores/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="Orientadores">
+            Orientadores
+          </p>
+        </a>
+        
+        <a href=""  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Equipe
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Projetos
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href=""  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Pesquisa científica
+          </p>
+        </a>
+        
+        <a href=""  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Aplicações
+          </p>
+        </a>
+        
+        <a href=""  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Desenvolvimento web
+          </p>
+        </a>
+        
+        <a href=""  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Bibliotecas computacionais
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Materiais
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href=""  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Tutoriais
+          </p>
+        </a>
+        
+        <a href=""  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Livros
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+  <a href="/posts/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="Posts">
+        Postagens
+    </p>
+</a>
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400 h-12"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button">
+                    <div class="flex items-center justify-center h-12 dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden h-12 dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" style="margin-right:5px">
+                <div class="flex items-center justify-center h-12 dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden h-12 dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li>
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="Sobres">
+            Sobre
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href=""  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Objetivos
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/sobre/orientadores/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="Orientadores">
+            Orientadores
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href=""  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Equipe
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Projetos
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href=""  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Pesquisa científica
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href=""  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Aplicações
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href=""  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Desenvolvimento web
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href=""  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Bibliotecas computacionais
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Materiais
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href=""  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Tutoriais
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href=""  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Livros
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="Posts">
+            Postagens
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/img/background_code.jpg);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      Estimação por máxima verossimilhança em R, Julia e Python
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="cursor: default;" class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2022-09-09 00:00:00 &#43;0000 UTC">9 de Janeiro de 2022</time><span class="px-2 text-primary-500">&middot;</span><span>4576 palavras</span><span class="px-2 text-primary-500">&middot;</span><span title="Tempo de leitura">22 minutos</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/comparando_linguagens/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="likes_posts/comparando_linguagens/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="likes">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+  </span>
+
+</span>
+</span><span class="px-2 text-primary-500">&middot;</span><span>
+    <button id="button_likes"
+        class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+        onclick="process_article()">
+        <span id="button_likes_heart" style="display:none" class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+  </span>
+
+ </span>
+        <span id="button_likes_emtpty_heart" class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<path fill="currentColor" d="M244 84L255.1 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 0 232.4 0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84C243.1 84 244 84.01 244 84L244 84zM255.1 163.9L210.1 117.1C188.4 96.28 157.6 86.4 127.3 91.44C81.55 99.07 48 138.7 48 185.1V190.9C48 219.1 59.71 246.1 80.34 265.3L256 429.3L431.7 265.3C452.3 246.1 464 219.1 464 190.9V185.1C464 138.7 430.4 99.07 384.7 91.44C354.4 86.4 323.6 96.28 301.9 117.1L255.1 163.9z"/></svg>
+  </span>
+
+</span>
+        <span id="button_likes_text">&nbsp;Like</span>
+    </button>
+</span><span class="px-2 text-primary-500">&middot;</span>
+
+
+  
+    
+  
+  
+
+<span class="mb-[2px]">
+  <a
+    href="https://github.com/enigma-de-ufpb/enigma-de-ufpb.github.io/tree/main/content/posts/comparando_linguagens/index.md"
+    class="text-lg hover:text-primary-500"
+    rel="noopener noreferrer"
+    target="_blank"
+    title="Editar Conteúdo"
+    ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M490.3 40.4C512.2 62.27 512.2 97.73 490.3 119.6L460.3 149.7L362.3 51.72L392.4 21.66C414.3-.2135 449.7-.2135 471.6 21.66L490.3 40.4zM172.4 241.7L339.7 74.34L437.7 172.3L270.3 339.6C264.2 345.8 256.7 350.4 248.4 353.2L159.6 382.8C150.1 385.6 141.5 383.4 135 376.1C128.6 370.5 126.4 361 129.2 352.4L158.8 263.6C161.6 255.3 166.2 247.8 172.4 241.7V241.7zM192 63.1C209.7 63.1 224 78.33 224 95.1C224 113.7 209.7 127.1 192 127.1H96C78.33 127.1 64 142.3 64 159.1V416C64 433.7 78.33 448 96 448H352C369.7 448 384 433.7 384 416V319.1C384 302.3 398.3 287.1 416 287.1C433.7 287.1 448 302.3 448 319.1V416C448 469 405 512 352 512H96C42.98 512 0 469 0 416V159.1C0 106.1 42.98 63.1 96 63.1H192z"/></svg>
+
+  </span>
+
+</span></a
+  >
+</span>
+  
+
+  
+  
+</div>
+
+
+<div style="cursor: pointer;" class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+<div class="flex">
+  
+  
+  
+  
+  <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+    alt="Enigma" src="/img/nova_logo.jpg" />
+  
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Autor
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      Enigma
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">Liga de programação aplicada à ciência de dados do Departamento de Estatística - DE da Universidade Federal da Paraíba - UFPB.</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/enigma-de-ufpb"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://instagram.com/enigma_ufpb"
+          target="_blank"
+          aria-label="Instagram"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://linkedin.com/in/enigma-1874562a5"
+          target="_blank"
+          aria-label="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://chat.whatsapp.com/IjJUQWL3qX79GVXJIdhPu8"
+          target="_blank"
+          aria-label="Whatsapp"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+    
+
+    
+
+    
+
+    
+    <div class="mb-5"></div>
+    
+  
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first sm:max-w-prose lg:ml-auto px-0 lg:order-last lg:max-w-xs ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open class="mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Tabela de conteúdos
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#uma-breve-introdução">Uma breve introdução</a></li>
+    <li><a href="#estimadores-de-máxima-verossimilhança---emv">Estimadores de máxima verossimilhança - EMV</a>
+      <ul>
+        <li><a href="#implementações">Implementações</a></li>
+      </ul>
+    </li>
+    <li><a href="#r">R</a></li>
+    <li><a href="#julia">Julia</a></li>
+    <li><a href="#python">Python</a></li>
+    <li><a href="#r-1">R</a></li>
+    <li><a href="#julia-1">Julia</a></li>
+    <li><a href="#python-1">Python</a>
+      <ul>
+        <li><a href="#visualização-gráfica">Visualização gráfica</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusões">Conclusões</a></li>
+    <li><a href="#referências">Referências</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Tabela de conteúdos
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#uma-breve-introdução">Uma breve introdução</a></li>
+    <li><a href="#estimadores-de-máxima-verossimilhança---emv">Estimadores de máxima verossimilhança - EMV</a>
+      <ul>
+        <li><a href="#implementações">Implementações</a></li>
+      </ul>
+    </li>
+    <li><a href="#r">R</a></li>
+    <li><a href="#julia">Julia</a></li>
+    <li><a href="#python">Python</a></li>
+    <li><a href="#r-1">R</a></li>
+    <li><a href="#julia-1">Julia</a></li>
+    <li><a href="#python-1">Python</a>
+      <ul>
+        <li><a href="#visualização-gráfica">Visualização gráfica</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusões">Conclusões</a></li>
+    <li><a href="#referências">Referências</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+ 
+<script>
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = e.attr('id');
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+          
+            $(e).removeClass('active');
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+        
+        onScroll();
+      });
+    }
+  })();
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="max-w-prose mb-20">
+          
+
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/comparando_linguagens/r_julia_python_animacao.gif"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<h2 class="relative group">Uma breve introdução 
+    <div id="uma-breve-introdução" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#uma-breve-introdu%c3%a7%c3%a3o" aria-label="Âncora">#</a>
+    </span>        
+    
+</h2>
+<p><a href="https://pt.wikipedia.org/wiki/Ci%C3%AAncia_de_dados"   target="_blank">
+    Ciência de dados</a> é, sem dúvidas, uma área de pesquisa que permeia diversas outras ciências, estando mais intimamente relacionada com as áreas de estatística e a computação.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Eu costumo dizer aos meus alunos que um <strong>ótimo cientista de dados</strong> é o profissional que sabe mais estatística que um cientista da computação mediano e mais computação de que um estatístico mediano.</p>
+</blockquote>
+<p>Também é importante dizer, antes de irmos ao tópico desse post, que é possível fazer ciência de dados em qualquer linguagem de programação que você domine! Claro, isso não implica que a produção de ciência de dados é igualmente fácil em qualquer linguagem que você escolha.</p>
+<blockquote>
+<p><strong>Dicas de linguagens</strong></p>
+<p>Se você me permitir te dar uma dica de qual linguagem de programação escolher, sem citar nomes, eu pediria para que você se aproximasse das linguagens que a comunidade que faz ciência de dados estão utilizando! Isso irá facilitar sua vida, pois você terá produtividade, aproveitando da infinidade de bibliotecas e frameworks disponíveis para nossa área.</p>
+<p>Porém, se mesmo assim você quiser insistir na pergunta 😟, me tirando da região de conforto de neutralidade, eu citaria três linguagens para você escolher:</p>
+<ol>
+<li><a href="https://www.r-project.org"   target="_blank">
+    <strong>R</strong></a>, veja R Core Team (2022)</li>
+<li><a href="https://www.python.org"   target="_blank">
+    <strong>Python</strong></a>, veja Rossum (2010)</li>
+<li><a href="https://julialang.org"   target="_blank">
+    <strong>Julia</strong></a>, veja Bezanson et al. (2017)</li>
+</ol>
+</blockquote>
+<p>Se você está estudando algumas dessas linguagens ou domina ao menos uma delas, certamente você estará traçando um caminho congruente e terá a sua disposição um arsenal de ferramentas prontas para trabalhar com ciência de dados (bibliotecas e frameworks), i.e., você terá vários presentinhos, grátis, para poder utilizar nos seus projetos! 🎁</p>
+<p>Cada cientista de dados, por óbvio, tem sua história pessoal, sendo comum trilharem caminhos diferentes na programação. Não se faz ciência de dados sem programação, ok? 👍</p>
+<p>No meu caso, programo em R a muito mais tempo que em Julia e Python, algo acima de uma década. A linguagem Julia, tive o primeiro contato em 2012, (veja p. 74 de (Bezanson et al. 2017), quando surgiu a linguagem, em 2018 utilizei para construir códigos de um artigo Marinho et al. (2018), mas somente a partir da pandemia de COVID-19 foi que comecei a estudar os manuais da linguagem com um pouco mais de seriedade. A linguagem Python venho estudando mais recentemente, porém, já consigo conversar sobre temas como funções variádicas, estruturas de dados, funções varargs, closures, bibliotecas como <a href="https://numpy.org"   target="_blank">
+    NumPy</a> e <a href="https://scipy.org"   target="_blank">
+    SciPy</a>, pedras angulares para se fazer ciência de dados em Python, entre outros assuntos. Se você veio de R ou Julia, como foi o meu caso, e quer dominar a linguagem Python, estude a <a href="https://docs.python.org/pt-br/3/tutorial/index.html"   target="_blank">
+    documentação oficial</a> da linguagem que é ótima. Procure conhecer:</p>
+<ol>
+<li>
+<p>As <strong>estruturas de dados</strong> de Python: arrays, tuplas, listas, dicionários e conjuntos. Nesse tópico, entenda que tuplas são objetos imutáveis, listas são mutáveis e dicionários são objetos mutáveis, assim como as listas, porém possuem palavras-chave;</p>
+</li>
+<li>
+<p>Estude o conceito de <strong>funções varargs</strong>, técnica muito poderosa, presente em todas às três linguagens, que permite generalizações que conduzem a códigos muito mais úteis;</p>
+</li>
+<li>
+<p>Estude o <strong>conceito de closures</strong>, também presente em todas às três linguagens que estamos conversando, e em diversas outras. Esse conceito permite que suas funções possam construir novas funções;</p>
+</li>
+<li>
+<p>Sobretudo, experimente a linguagem!</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>As linguagens podem conversar entre si 🎉</strong></p>
+<p>Você não precisará apenas utilizar uma mesma linguagem de programação em um projeto de ciência de dados que esteja trabalhando. Se existe como fazer algo na linguagem que você está utilizando, faça nessa linguagem! Isso irá diminuir o uso de dependências. Porém, caso algo não exista para sua linguagem e você não está afim de implementar algum método do zero, então lembre-se que você poderá importar código de outras linguagens.</p>
+<p>Se você está</p>
+<ol>
+<li>
+<p><strong>em R</strong>: você poderá importar, utilizando a biblioteca <strong>reticulate</strong>, veja Ushey, Allaire, and Tang (2022), métodos e objetos com estruturas de dados em Python onde serão convertidos para estruturas equivalentes em R. Caso queira importar códigos Julia, você poderá utilizar a biblioteca <strong>JuliaCall</strong> (Li 2019);</p>
+</li>
+<li>
+<p><strong>em Julia</strong>: você poderá importar códigos R usando a biblioteca <a href="https://juliainterop.github.io/RCall.jl/stable/"   target="_blank">
+    <strong>RCall</strong></a>. Para importar códigos Python, você deverá utilizar a biblioteca <a href="https://github.com/JuliaPy/PyCall.jl"   target="_blank">
+    <strong>PyCall</strong></a>;</p>
+</li>
+<li>
+<p><strong>em Python</strong>: você poderá chamar códigos R utilizando a biblioteca <a href="https://rpy2.github.io/doc/latest/html/introduction.html"   target="_blank">
+    <strong>rpy2</strong></a>. Já para chamar códigos Julia, veja a biblioteca <a href="https://github.com/JuliaPy/pyjulia"   target="_blank">
+    <strong>PyJulia</strong></a>.</p>
+</li>
+</ol>
+</blockquote>
+<p>Se você já é fluente em ao menos uma linguagem de programação, nos concentraremos nessas três citadas acima, então perceberá que dominar outra(s) linguagem(ens) será muito mais rápido. São poucas semanas de estudo necessárias para que você já consiga produzir códigos com boas práticas de programação, coisa que foi muito mais árduo no aprendizado da primeira linguagem. Claro, vez ou outra você se pegará olhando com constância os manuais dessa(s) nova(s) linguagem(ens), pois a sintaxe é nova para você e eventualmente se misturará 🧠 com a sintaxe das linguagens que você já programa. Normal!</p>
+<p>Um dos problemas corriqueiros para quem trabalha com ciência de dados e, em particular, com inferência estatística é a obtenção dos <strong>Estimadores de Máxima Verossimilhança</strong> - <strong>EMV</strong>. Quando estamos utilizando frameworks para ciência de dados, muitas vezes essas estimações ocorrem por baixo do pano. Há diversas situações em que estimadores com boas propriedades estatísticas precisam ser utilizados, e os EMV são, de longe, os mais utilizados.</p>
+<p>Na área de machine learning, por exemplo, se o que está sendo otimizado por &ldquo;baixo dos panos&rdquo; não é uma função de log-verossimilhança, existirá alguma função objetivo que precisará ser maximizada ou minimizada, utilizando métodos de otimizações globais; métodos de Newton e quasi-Newton, os mesmos que utilizaremos para obtenção das estimativas obtidas pelos EMV, aqui nessa postagem. Seguindo com outro exemplo, na área de redes neurais alimentadas para frente (feedforward), aplicadas a problemas de regressão ou classificação, existe uma função objetivo que considerará os pesos sinápticos da arquitetura da rede com $n$ conexões, isto é, existirá uma função $f(y, w_1, w_2, \cdots)$, em função dos pesos sinápticos $w_i, i = 1, &hellip;, n$ e da saída esperada. Como $y$ é conhecido (saída esperada da rede), para que a rede esteja bem ajustada, será preciso encontrar um conjunto ótimo de valores $w_i$ que minimize essa função. Isso é feito pelo algoritmo <a href="https://en.wikipedia.org/wiki/Backpropagation"   target="_blank">
+    backpropagation</a> utiliza métodos de otimização não-linear para encontrar o mínimo global de uma função objetivo.</p>
+<p>Se você quer conhecer mais profundamente essas metodologias de otimização, escrevi sobre elas no meu material de <a href="https://prdm0.github.io/aulas_computacional/"   target="_blank">
+    <strong>estatística computacional</strong></a>, na Seção de <a href="https://prdm0.github.io/aulas_computacional/t%C3%B3picos-em-estat%C3%ADstica-computacional.html#otimiza%C3%A7%C3%A3o-n%C3%A3o-linear"   target="_blank">
+    <strong>Otimização Não-linear</strong></a>.</p>
+<blockquote>
+<p><strong>Em algum momento você tem que saber otimizar funções</strong></p>
+<p>Em fim, você em algum momento, no seu percurso na área de ciência de dados, irá ter que otimizar funções. Quando digo otimizar, em geral, me refiro a maximizar ou minimizar uma função objetivo. Escolher entre minimizar ⬇️ ou maximizar ⬆️ dependerá da natureza do problema em questão.</p>
+<p>Você, como um cientista de dados que é, ou que almeja ser, será o responsável em descobrir se o que precisará fazer será maximizar ou minimizar uma função. Sobretudo, você que precisará saber qual função deverá otimizar! Isso vai além da programação. Portanto, procure sempre entender o problema e conhecer os detalhes das metodologias que deseja utilizar. 🧠</p>
+<p>Funções objetivos irão sempre aparecer na sua vida! 👍</p>
+</blockquote>
+<h2 class="relative group">Estimadores de máxima verossimilhança - EMV 
+    <div id="estimadores-de-máxima-verossimilhança---emv" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#estimadores-de-m%c3%a1xima-verossimilhan%c3%a7a---emv" aria-label="Âncora">#</a>
+    </span>        
+    
+</h2>
+<p>Para não ficarmos apenas olhando códigos de programação em três linguagens distintas (<strong>R</strong>, <strong>Julia</strong> e <strong>Python</strong>), irei contextualizar um simples problema: o problema de encontrar o máximo da <a href="https://en.wikipedia.org/wiki/Likelihood_function"   target="_blank">
+    <strong>função de verossimilhança</strong></a>. Serei muito breve! 🎉</p>
+<blockquote>
+<p><strong>A maior barreira 🧱 de uma implementação consistente!</strong></p>
+<p>A grande barreira que limita a nossa implementação, quando já dominamos ao menos uma linguagem de programação, é não saber ao certo o que desejamos implementar.</p>
+<p>É por isso que irei contextualizar, de forma breve, um problema comum na estatística e ciência de dados; o problema de otimizar uma função objetivo. Mais precisamente, desejaremos obter o máximo da função de verossimilhança.</p>
+</blockquote>
+<p>Para simplificar a teoria, irei considerar algumas premissas:</p>
+<ol>
+<li>
+<p>Você tem algum conhecimento de probabilidade;</p>
+</li>
+<li>
+<p>Considerarei o caso univariado, em que teremos uma única variável aleatória - v.a. que denotarei por $X$;</p>
+</li>
+<li>
+<p>A variável aleatória - v.a. $X$ é contínua, portanto suas observações podem ser modeladas por uma <a href="https://en.wikipedia.org/wiki/Probability_density_function"   target="_blank">
+    função densidade de probabilidade - fdp</a> $f$, tal que $f_X(x) \geq 0$ e $\int_{-\infty}^{+\infty}f_X(x), \mathrm{d}x = 1$.</p>
+</li>
+</ol>
+<p>Na prática, o problema consiste em, por meio de um conjunto de dados, fixarmos uma fdp $f_X$. Daí, desejaremos encontrar os parâmetros de fdp que faz com que $f_X$ melhor se ajuste aos dados. Os parâmetros $\alpha$ e $\beta$ que fará com que $f_X$ melhor se ajuste aos dados poderão ser obtidos maximizando a função de verossimilhança $\mathcal{L}$ de $f_X$, em relação a $\alpha$ e $\beta$, definida por:</p>
+<p><span id="eq-objetivo">$$
+\mathcal{L}(x, \alpha,\beta) = \prod_{i = 1}^n f_{X_i}(x, \alpha, \beta).
+\qquad(1)$$</span> Para simplificar as coisas, como $\log(\cdot)$ é uma função monótona, então, os valores de $\alpha$ e $\beta$ que maximizam $\mathcal{L}$ serão os mesmos que maximizam $\log(\mathcal{L})$, ou seja, poderemos nos concentrar em maximizar:</p>
+<p><span id="eq-logobjetivo">$$\ell(x, \alpha, \beta) = \sum_{i = i}^n \log[f_{X_i}(x, \alpha, \beta)]. \qquad(2)$$</span></p>
+<p>Suponha que $X \sim Weibull(\alpha = 2.5, \beta = 1.5)$, ou seja, que os dados que chegam a sua mesa são provenientes de uma v.a. $X$ que tem observações que seguem a distribuição $Weibull(\alpha = 2.5, \beta = 1.5)$. <strong>Essa será nossa distribuição verdadeira!</strong></p>
+<p>Na prática, você apenas conhecerá os dados! Será você, como cientista de dados, que irá supor alguma família de distribuições para modelar os dados em questão. 🥴</p>
+<p>Vamos supor que você, assertivamente, escolhe a família Weibull de distribuições para modelar o seu conjunto de dados (você fará isso olhando o comportamento dos dados, por exemplo, fazendo um histograma). Existem testes de aderências para checar o quanto uma distribuição se ajusta a um conjunto de dados. Não entraremos nesse assunto aqui!</p>
+<details>
+<summary>Quer ver o código do gráfico? Clique aqui!</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="c1"># Quantidade de elementos</span>
+<span class="n">n</span> <span class="o">&lt;-</span> <span class="m">550L</span>
+<span class="c1"># Parâmetro de forma</span>
+<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="m">2.5</span>
+<span class="c1"># Parâmetro de escala</span>
+<span class="n">beta</span> <span class="o">&lt;-</span> <span class="m">1.5</span>
+
+<span class="c1"># Fixando uma semente, de forma a sempre obtermos a mesma amostra</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+<span class="n">dados</span> <span class="o">&lt;-</span>
+  <span class="nf">data.frame</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="n">length.out</span> <span class="o">=</span> <span class="n">n</span><span class="p">),</span>
+    <span class="n">y_rand</span> <span class="o">=</span> <span class="nf">rweibull</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">beta</span><span class="p">)</span>
+  <span class="p">)</span>
+
+<span class="n">dados</span> <span class="o">|&gt;</span>
+  <span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+  <span class="nf">geom_histogram</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">y_rand</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">..density..</span><span class="p">),</span> <span class="n">bins</span> <span class="o">=</span> <span class="m">15</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">ggtitle</span><span class="p">(</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s">&#34;Histograma do conjunto de dados&#34;</span><span class="p">,</span>
+    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Na prática você só tem eles&#34;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Densidade&#34;</span><span class="p">,</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s">&#34;x&#34;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">scale_x_continuous</span><span class="p">(</span>
+    <span class="n">limits</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">2.7</span><span class="p">),</span>
+    <span class="n">n.breaks</span> <span class="o">=</span> <span class="m">15</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">scale_y_continuous</span><span class="p">(</span>
+    <span class="n">limits</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1.05</span><span class="p">),</span>
+    <span class="n">n.breaks</span> <span class="o">=</span> <span class="m">15</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_function</span><span class="p">(</span>
+    <span class="n">fun</span> <span class="o">=</span> <span class="n">dweibull</span><span class="p">,</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="m">1</span><span class="p">),</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="m">0.8</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_function</span><span class="p">(</span>
+    <span class="n">fun</span> <span class="o">=</span> <span class="n">dweibull</span><span class="p">,</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="m">1.1</span><span class="p">),</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;blue&#34;</span><span class="p">,</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="m">0.8</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_function</span><span class="p">(</span>
+    <span class="n">fun</span> <span class="o">=</span> <span class="n">dweibull</span><span class="p">,</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="m">1.2</span><span class="p">),</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;tomato&#34;</span><span class="p">,</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="m">0.8</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_function</span><span class="p">(</span>
+    <span class="n">fun</span> <span class="o">=</span> <span class="n">dweibull</span><span class="p">,</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="m">1.3</span><span class="p">),</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;red&#34;</span><span class="p">,</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="m">0.8</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_function</span><span class="p">(</span>
+    <span class="n">fun</span> <span class="o">=</span> <span class="n">dweibull</span><span class="p">,</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">beta</span><span class="p">),</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;gold&#34;</span><span class="p">,</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="m">0.8</span>
+  <span class="p">)</span>
+</code></pre></div></details>
+<img src="index.markdown_strict_files/figure-markdown_strict/unnamed-chunk-1-1.png" width="768" />
+<p>Note que todas as funções densidades de probabilidades - fdps plotadas no histograma apresentado no gráfico acima são densidades da família Weibull de distribuições. O que difere uma da outra são os valores de $\alpha$ e $\beta$, respectivamente. Não basta escolher uma família de distribuições adequada. Precisamos escolher (estimar) adequadamente os parâmetros que indexam a distribuição, sendo o método de máxima verossimilhança, a metodologia estatística que nos ajudam a fazer uma ótima escolha, conduzindo as estimativas que são provenientes de estimadores com boas propriedades estatísticas.</p>
+<p>Lembre-se, para obter essas estimativas, temos que maximizar a <a href="#eq-objetivo"  >
+    Equation 1</a>, ou equivalentemente a <a href="#eq-logobjetivo"  >
+    Equation 2</a>.</p>
+<p>No gráfico acima, é possível visualmente perceber que a curva em amarelo é a que melhor aproxima o comportamento dos dados. Não iremos fazer testes de adequação!</p>
+<p>De fato, essa é a curva da distribuição verdadeira, i.e., é a curva da fdp de $X \sim Weibull(\alpha = 2.5, \beta = 1.5)$. Por sinal, ainda não coloquei a equação da fdp de $X$. Segue logo abaixo:</p>
+<p>$$f_X(x) = (\alpha/\beta)(x/\beta)^{\alpha - 1}\exp[{-(x/\beta)^\alpha}],$$ com $x$, $\alpha$ e $\beta &gt; 0$.</p>
+<h3 class="relative group">Implementações 
+    <div id="implementações" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#implementa%c3%a7%c3%b5es" aria-label="Âncora">#</a>
+    </span>        
+    
+</h3>
+<p>Agora que já conhecemos $f_X$ e $\ell(\cdot)$ (&ldquo;função objetivo&rdquo;), poderemos colocar as &ldquo;<del>mãos na massa</del>&rdquo; no teclado.</p>
+<blockquote>
+<p><strong>E os dados?</strong></p>
+<p>Os dados serão gerados aleatoriamente, em cada uma das linguagens (<a href="https://www.r-project.org"   target="_blank">
+    <strong>R</strong></a>, <a href="https://julialang.org"   target="_blank">
+    <strong>Julia</strong></a> e <a href="https://www.python.org"   target="_blank">
+    <strong>Python</strong></a>). Sendo assim, muito provavelmente não serão os mesmos dados, em cada linguagem, pois a sequência gerada que corresponderá aos nossos dados dependerá das implementações dos geradores de números pseudo-aleatórios de cada linguagem. Porém, os resultados das estimativas devem convergir para valores próximos a $\alpha = 2.5$ e $\beta = 1.5$, nas três linguagens. Por isso, não irie comparar, inicialmente, os resultados das estimativas obtidas. Ao final da postagem, farei uma sucinta comparação.</p>
+<p>Irei colocar comentários nos códigos para que você possa estudar cada um deles. Nada em excesso!</p>
+</blockquote>
+<p>Antes irei colocar uma observação para a linguagem Python. As pedras angulares para computação científica em Python são as bibliotecas NumPy e Scipy. Por que elas são úteis?</p>
+<ol>
+<li>
+<p><strong>Numpy</strong>: é uma biblioteca de código aberto iniciada em 2005 e que possui diversos métodos (funções) numéricas comumente utilizadas na computação científica. Há diversos métodos para operar sobre arrays, vetorização, geração de números pseudo-aleatórios, entre outras coisas. Consulte mais detalhes em <a href="https://numpy.org/doc/stable"   target="_blank">
+    https://numpy.org/doc/stable</a>;</p>
+</li>
+<li>
+<p><strong>Scipy</strong>: trata-se de outra biblioteca importante que contém implementações de métodos e algoritmos fundamentais para computação científica, como métodos de integração, interpolação, otimização, entre diversas outras metodologias. Consulte outros detalhes em <a href="https://scipy.org"   target="_blank">
+    https://scipy.org</a>.</p>
+</li>
+</ol>
+<p>Iremos utilizar ambas as bibliotecas. Basicamente a Numpy será utilizada para vetorização de código, trabalhar com arrays e gerar observações da distribuição Weibull. Nesse último ponto, especificamente, a biblioteca Numpy implementa a função que gera observações de uma distribuição Weibull, onde a distribuição Weibull só tem um parâmetro. Consulte detalhes em <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.weibull.html"   target="_blank">
+    https://numpy.org/doc/stable/reference/random/generated/numpy.random.weibull.html</a>.</p>
+<p>No <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.weibull.html"   target="_blank">
+    link</a> você verá que o que é implementado pelo método <code>random.weibull</code> é gerar observações de $X = [-\log(U)]^{1/\alpha} \sim Weibull(\alpha)$, com $U$ sendo um v.a. uniforme no intervalo (0,1] . Daí, para gerar observações da distribuição $Weibull(\alpha, \beta)$, teremos que multiplicar o resultado de <code>random.weibull</code> pelo valor de $\beta$. Porém, com pouco código, podemos construir uma função para gerar observações da $Weibull(\alpha, \beta)$.</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/comparando_linguagens/nao_entendi.gif"
+        alt="Eu olhando para um pouco de malabarismo de código em Python."
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>Veja como seria em R, Julia e Python:</p>
+<h2 class="relative group">R 
+    <div id="r" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#r" aria-label="Âncora">#</a>
+    </span>        
+    
+</h2>
+<details>
+<summary>Code</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">set.seed</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+<span class="nf">rweibull</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="m">10L</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="m">2.5</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="m">1.5</span><span class="p">)</span>
+</code></pre></div></details>
+<pre><code> [1] 0.6181884 1.6792787 1.4930932 1.1870595 0.5881789 1.8107341 0.6138897
+ [8] 0.4766274 1.0544363 1.1027820
+</code></pre>
+<h2 class="relative group">Julia 
+    <div id="julia" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#julia" aria-label="Âncora">#</a>
+    </span>        
+    
+</h2>
+<details>
+<summary>Code</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="k">using</span> <span class="n">Distributions</span>
+<span class="k">using</span> <span class="n">Random</span>
+
+<span class="n">Random</span><span class="o">.</span><span class="n">seed!</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">rand</span><span class="p">(</span><span class="n">Weibull</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div></details>
+<pre><code>10-element Vector{Float64}:
+ 1.3361401397866541
+ 1.0507258710483653
+ 0.8178793280596004
+ 0.6700247875189858
+ 0.6429703222489156
+ 0.6315072585920245
+ 2.313206178975804
+ 2.048795844959291
+ 1.1773995533033512
+ 1.6047832712314394
+</code></pre>
+<h2 class="relative group">Python 
+    <div id="python" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#python" aria-label="Âncora">#</a>
+    </span>        
+    
+</h2>
+<details>
+<summary>Code</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">random_weibull</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">weibull</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">random_weibull</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span>
+</code></pre></div></details>
+<pre><code>array([1.36908085, 1.64315124, 1.4528271 , 1.36309319, 1.18186313,
+       1.52263868, 1.20258335, 2.06494277, 2.42259084, 1.12172534])
+</code></pre>
+<blockquote>
+<p><strong>Isso é um pouco estranho, mas tudo bem, sabemos programar!</strong></p>
+<p>Ter que multiplicar as observações geradas de uma distribuição que deveria ter, em sua definição, dois parâmetros me parece estranho! Perceba que no código de Python foi preciso fazer definir a função <code>random_weibull</code>, em que foi preciso considerar <code>beta * np.random.weibull(alpha, n)</code> para se ter observações Weibull com valores de $\beta$ diferente de 1. É fácil adaptar, mais o designer não é legal, na minha opinião.</p>
+<p>Afinal de contas, é muito mais conveniente alterar o comportamento e resultados de uma função passando argumentos para a função, e não fazendo as alterações fora dela. É esse o papel dos argumentos, não? Se o usuário tivesse interesse que $\beta = 1$, como ocorre em <code>random.weibull</code> ele poderia especificar isso como argumento passados à função, certo?</p>
+<p>Comportamentos mais convenientes são observados em R e Julia, afinal de contas, elas surgiram com o foco na computação científica. R é mais voltada para ciência de dados e aprendizagem de máquina. Já Julia, além dos mesmos focos de R, também é uma linguagem de propósito geral, assim como Python é em sua essência.</p>
+<p>Note que essa minha crítica não é a linguagem Python. Refere-se tão somente ao método <code>random.weibull</code> e alguns outros que seguem esse designer de implementação. Python é uma ótima linguagem que vem melhorando o seu desempenho nas novas versões. Veja as <a href="https://docs.python.org/3.11/whatsnew/3.11.html"   target="_blank">
+    novidades</a> de lançamento do Python 3.11, que alcançou melhorias no desempenho computacional entre 10-60% quando comparado com Python 3.10. Algo em torno de 1.25x de aumento no desempenho, considerando o conjunto de benchmarks padrão que o comitê de desenvolvimento da linguagem utiliza.</p>
+</blockquote>
+<p>Agora, sim, vamos aos três códigos completos para a solução do problema que motiva o título desse post.</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/comparando_linguagens/preguica_feliz.gif"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>Nas três linguagens, utilizarei os mesmo conceitos importantes de implementação que conduzem a códigos mais generalizados e a um melhor reaproveitamento de código:</p>
+<ol>
+<li>
+<p>Note que utilizo o conceito de funções com argumentos variáveis, também chamadas de <strong>funções varargs</strong>. Perceba que a função <code>log_likelihood</code> não precisa ser reimplementada novamente para outras funções densidades. A função densidade de probabilidade é um argumento dessa função que denominei de <code>log_likelihood</code> nos três códigos (R, Python e Julia). Precisamos de funções com operadores <strong>varargs</strong>, tendo em vista que não conhecemos o número de parâmetros da fdp que o usuário irá passar como argumento. Funções com argumentos <strong>varargs</strong> é uma técnica muito poderosa. Utilizei esses conceitos em Python e Julia, devido a natureza das funções de otimizações das duas linguagens, em que em seus designers permitem que os argumentos a serem otimizados da função objetivo seja de número variável. As funções varargs de R são definidas pelo operador dot-dot-dot (<code>...</code>). O designer da função <code>optim()</code> de R incluem o parâmetro dot-dot-dot, para argumentos extras que eventualmente possam existir na função objetivo. ⚡</p>
+</li>
+<li>
+<p>Note que não é preciso obter analiticamente a expressão da função de log-verossimilhança. Não há sentido nisso, tendo em vista que o nosso objetivo é simplesmente obter as estimativas numéricas para $\alpha$ e $\beta$ . É muito mais útil ter uma função genérica que se adéque a diversas outras situações!</p>
+</li>
+<li>
+<p>Outro conceito poderoso e que te leva a implementações consistentes é entender o funcionamento das funções anônimas, também conhecidas como <a href="https://en.wikipedia.org/wiki/Anonymous_function"   target="_blank">
+    <strong>funções lambda</strong></a>.</p>
+</li>
+<li>
+<p>Foi utilizado como método de otimização (minimização), o método <a href="https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm"   target="_blank">
+    BFGS</a>. Escrevi a respeito dos métodos de quasi-Newton, classe de algoritmos que o método de <strong>B</strong>royden&ndash;<strong>F</strong>letcher&ndash;<strong>G</strong>oldfarb&ndash;<strong>S</strong>hanno - <strong>BFGS</strong> pertencem, nos materiais que disponibilizo aos meus alunos na disciplina de estatística computacional que leciono no Departamento de Estatística da UFPB. Se quiser um pouco mais de detalhes a respeito dos métodos de Newtone quasi-Newton, clique <a href="https://prdm0.github.io/aulas_computacional/t%C3%B3picos-em-estat%C3%ADstica-computacional.html#otimiza%C3%A7%C3%A3o-n%C3%A3o-linear"   target="_blank">
+    aqui</a>.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Minimizar ou maximizar?</strong></p>
+<p>Alguns algoritmos de otimização são definidos para minimizar uma função objetivo, como é o caso da maioria das implementações dos métodos de busca global, onde se encaixa o método BFGS. Mas não tem problema, uma vez que minimizar, $-f$ equivale a maximizar $f$, em que $f$ é uma dada função objetivo.</p>
+</blockquote>
+<h2 class="relative group">R 
+    <div id="r-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#r-1" aria-label="Âncora">#</a>
+    </span>        
+    
+</h2>
+<details>
+<summary>Code</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Quantidade de observações</span>
+<span class="n">n</span> <span class="o">&lt;-</span> <span class="m">250L</span>
+
+<span class="c1"># Parâmetros que especificam a distribuição verdadeira, i.e., distribuição</span>
+<span class="c1"># da variável aleatória cujo os dados são observações.</span>
+<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="m">2.5</span>
+<span class="n">beta</span> <span class="o">&lt;-</span> <span class="m">1.5</span>
+
+<span class="c1"># Fixando uma semente para o gerador de números pseudo-aleatórios.</span>
+<span class="c1"># Assim, conseguimos, toda vez que rodamos o código, reproduzir</span>
+<span class="c1"># os mesmos dados.</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+
+<span class="c1"># Gerando as observações. Esse será o conjunto de dados que você tera para</span>
+<span class="c1"># modelar.</span>
+<span class="n">dados</span> <span class="o">&lt;-</span> <span class="nf">rweibull</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">beta</span><span class="p">)</span>
+
+<span class="n">pdf_weibull</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">par</span><span class="p">){</span>
+  <span class="n">alpha</span> <span class="o">&lt;-</span> <span class="n">par[1]</span>
+  <span class="n">beta</span> <span class="o">&lt;-</span> <span class="n">par[2]</span>
+  <span class="n">alpha</span><span class="o">/</span><span class="n">beta</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">beta</span><span class="p">)</span><span class="nf">^</span><span class="p">(</span><span class="n">alpha</span><span class="m">-1</span><span class="p">)</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">beta</span><span class="p">)</span><span class="n">^alpha</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># Checando se a densidade de pdf_weibull integra em 1</span>
+<span class="n">area</span> <span class="o">=</span> <span class="nf">integrate</span><span class="p">(</span><span class="n">f</span> <span class="o">=</span> <span class="n">pdf_weibull</span><span class="p">,</span> <span class="n">lower</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="kc">Inf</span><span class="p">,</span> <span class="n">par</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2.5</span><span class="p">,</span> <span class="m">1.5</span><span class="p">))</span>
+
+<span class="c1"># Em R, o operador dot-dot-dot (...) é utilizado para definir</span>
+<span class="c1"># quantidade variádica de argumentos. Assim, log_likelihood é</span>
+<span class="c1"># uma função vararg.</span>
+<span class="n">log_likelihood</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">par</span><span class="p">)</span>
+  <span class="o">-</span><span class="nf">sum</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="nf">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">par</span><span class="p">)))</span>
+
+<span class="n">result</span> <span class="o">&lt;-</span> <span class="nf">optim</span><span class="p">(</span>
+  <span class="n">fn</span> <span class="o">=</span> <span class="n">log_likelihood</span><span class="p">,</span>
+  <span class="n">par</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="m">0.5</span><span class="p">),</span>
+  <span class="n">method</span> <span class="o">=</span> <span class="s">&#34;BFGS&#34;</span><span class="p">,</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">dados</span><span class="p">,</span>
+  <span class="n">pdf</span> <span class="o">=</span> <span class="n">pdf_weibull</span>
+<span class="p">)</span>
+
+<span class="c1"># Imprimindo os valores das estimativas de máxima verossimilhança</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&#34;Valores estimados de alpha e beta\n&#34;</span><span class="p">)</span>
+</code></pre></div></details>
+<pre><code>Valores estimados de alpha e beta
+</code></pre>
+<details>
+<summary>Code</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">cat</span><span class="p">(</span><span class="s">&#34;--&gt; alpha: &#34;</span><span class="p">,</span> <span class="n">result</span><span class="o">$</span><span class="n">par[1]</span><span class="p">,</span> <span class="s">&#34;\n&#34;</span><span class="p">)</span>
+</code></pre></div></details>
+<pre><code>--&gt; alpha:  2.834629 
+</code></pre>
+<details>
+<summary>Code</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">cat</span><span class="p">(</span><span class="s">&#34;--&gt; beta: &#34;</span><span class="p">,</span> <span class="n">result</span><span class="o">$</span><span class="n">par[2]</span><span class="p">,</span> <span class="s">&#34;\n&#34;</span><span class="p">)</span>
+</code></pre></div></details>
+<pre><code>--&gt; beta:  1.456748 
+</code></pre>
+<h2 class="relative group">Julia 
+    <div id="julia-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#julia-1" aria-label="Âncora">#</a>
+    </span>        
+    
+</h2>
+<details>
+<summary>Code</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="k">using</span> <span class="n">Distributions</span>
+<span class="k">using</span> <span class="n">Random</span>
+<span class="k">using</span> <span class="n">Optim</span>
+<span class="k">using</span> <span class="n">QuadGK</span>
+
+<span class="c"># Quantidade de observações</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">250</span><span class="p">;</span>
+
+<span class="c"># Parâmetros que especificam a distribuição verdadeira, i.e.,</span>
+<span class="c"># da fdp da v.a. cujos os dados são observações.</span>
+<span class="n">α</span> <span class="o">=</span> <span class="mf">2.5</span><span class="p">;</span>
+<span class="n">β</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">;</span>
+
+<span class="c"># Fixando um valor de semente</span>
+<span class="n">Random</span><span class="o">.</span><span class="n">seed!</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="c"># Gerando um array de dados com distribuição Weibull(α, β)</span>
+<span class="n">dados</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">Weibull</span><span class="p">(</span><span class="n">α</span><span class="p">,</span><span class="n">β</span><span class="p">),</span> <span class="n">n</span><span class="p">);</span>
+
+<span class="c"># Função densidade de probaiblidade de uma v.a.</span>
+<span class="c"># X ∼ Weibull(α, β)</span>
+<span class="k">function</span> <span class="n">pdf_weibull</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">par</span> <span class="o">=</span> <span class="p">(</span><span class="n">α</span><span class="p">,</span> <span class="n">β</span><span class="p">))</span>
+    <span class="n">α</span><span class="p">,</span> <span class="n">β</span> <span class="o">=</span> <span class="n">par</span><span class="o">.</span><span class="n">α</span><span class="p">,</span> <span class="n">par</span><span class="o">.</span><span class="n">β</span>
+    <span class="nd">@.</span> <span class="n">α</span><span class="o">/</span><span class="n">β</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">β</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="n">α</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">β</span><span class="p">)</span><span class="o">^</span><span class="n">α</span><span class="p">)</span>
+<span class="k">end</span><span class="p">;</span>
+
+<span class="c"># Checando se a integral no suporte de pdf_weibull integra em 1</span>
+<span class="n">area</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="n">quadgk</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">pdf_weibull</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">α</span> <span class="o">=</span> <span class="n">α</span><span class="p">,</span> <span class="n">β</span> <span class="o">=</span> <span class="n">β</span><span class="p">)),</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">Inf</span><span class="p">);</span>
+
+<span class="c"># Escrevendo a função log_likelihood que em julia denotarei por</span>
+<span class="c"># ℓ, tendo em vista que podemos fazer uso de caracteres UTF-8</span>
+<span class="c"># nessa linguagem.</span>
+<span class="k">function</span> <span class="n">ℓ</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">par</span><span class="o">...</span><span class="p">)</span>
+    <span class="o">-</span><span class="n">sum</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="p">(</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">par</span><span class="o">...</span><span class="p">)))</span>
+<span class="k">end</span><span class="p">;</span>
+
+<span class="c"># Encontrando as estimativas de máxima verossimilhança usando a</span>
+<span class="c"># biblioteca Optim</span>
+<span class="n">emv</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">ℓ</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">pdf_weibull</span><span class="p">,</span> <span class="p">(</span><span class="n">α</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">β</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])),</span>
+        <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+        <span class="n">LBFGS</span><span class="p">()</span>
+<span class="p">);</span>
+
+<span class="n">emv_α</span><span class="p">,</span> <span class="n">emv_β</span>  <span class="o">=</span> <span class="n">emv</span><span class="o">.</span><span class="n">minimizer</span><span class="p">;</span>
+
+<span class="c"># Imprimindo o resultado</span>
+
+<span class="n">print</span><span class="p">(</span><span class="s">&#34;Valores estimados para α e β</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span>
+</code></pre></div></details>
+<pre><code>Valores estimados para α e β
+</code></pre>
+<details>
+<summary>Code</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="n">print</span><span class="p">(</span><span class="s">&#34;--&gt; α: &#34;</span><span class="p">,</span> <span class="n">emv_α</span><span class="p">,</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span>
+</code></pre></div></details>
+<pre><code>--&gt; α: 2.4472234393032837
+</code></pre>
+<details>
+<summary>Code</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="n">print</span><span class="p">(</span><span class="s">&#34;--&gt; β: &#34;</span><span class="p">,</span> <span class="n">emv_β</span><span class="p">,</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span>
+</code></pre></div></details>
+<pre><code>--&gt; β: 1.4480344422787308
+</code></pre>
+<h2 class="relative group">Python 
+    <div id="python-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#python-1" aria-label="Âncora">#</a>
+    </span>        
+    
+</h2>
+<details>
+<summary>Code</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stat</span>
+<span class="kn">import</span> <span class="nn">scipy.integrate</span> <span class="k">as</span> <span class="nn">inte</span>
+<span class="kn">import</span> <span class="nn">scipy.optimize</span> <span class="k">as</span> <span class="nn">opt</span>
+
+<span class="c1"># Valores da distribuição verdadeira</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+<span class="c1"># Número de observações que irão compor nossos dados</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">250</span>
+
+<span class="c1"># Implementando a função random_weibull, em que os parâmetros</span>
+<span class="c1"># que indexam a distribuição são argumentos da função. Tem mais</span>
+<span class="c1"># sentido ser assim, não?</span>
+<span class="k">def</span> <span class="nf">random_weibull</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">weibull</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Escrevendo a funçãp densidade de probabilidade da Weibull</span>
+<span class="c1"># na reparametrização correta.</span>
+<span class="k">def</span> <span class="nf">pdf_weibull</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+  <span class="n">alpha</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">beta</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">alpha</span><span class="o">/</span><span class="n">beta</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">beta</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">alpha</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">beta</span><span class="p">)</span><span class="o">**</span><span class="n">alpha</span><span class="p">)</span>
+
+<span class="c1"># Testando se a densidade integra em 1</span>
+<span class="n">área</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">inte</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">:</span> <span class="n">pdf_weibull</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="p">[</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">]),</span>
+      <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Implementando uma função genérica que implementa a função objetivo</span>
+<span class="c1"># (função de log-verossimilhança) que iremos maximizar. Essa função</span>
+<span class="c1"># irá receber como argumento uma função densidade de probabilidade.</span>
+<span class="c1"># Não é preciso destrinchar (obter de forma exata) a função de</span>
+<span class="c1"># log-verossimilhança!</span>
+<span class="c1"># A função de log-verossimilhança encontra-se multiplicada por -1</span>
+<span class="c1"># devido ao fato da função que iremos fazer otimização minimizar</span>
+<span class="c1"># uma função função objetivo. Minimizar -f equivale a maximizar f.</span>
+<span class="c1"># Lembre-se disso!</span>
+<span class="k">def</span> <span class="nf">log_likelihood</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+  <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">pdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">)))</span>
+
+<span class="c1"># Gerando um conjunto de dados com alpha = 2.5 e beta = 1.5. Essa</span>
+<span class="c1"># é nossa distribuição verdadeira, i.e., é a distribuição que gera</span>
+<span class="c1"># que gerou os dados que desejamos ajustar.</span>
+<span class="c1"># Precisamos fixar uma semente, uma vez que queremos os mesmos dados</span>
+<span class="c1"># toda vez que rodamos esse código.</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">dados</span> <span class="o">=</span> <span class="n">random_weibull</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="n">beta</span><span class="p">)</span>
+
+<span class="c1"># Miminimizando a função -1 * log_likelihood, i.e., maximizando</span>
+<span class="c1"># a função log_likelihood.</span>
+<span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span>
+  <span class="n">fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">log_likelihood</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">pdf_weibull</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">),</span>
+  <span class="n">x0</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">x</span>
+
+<span class="c1"># Imprimindo os valores das estimativas de máxima verossimilhança</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Valores estimados de alpha e beta</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></div></details>
+<pre><code>Valores estimados de alpha e beta
+</code></pre>
+<details>
+<summary>Code</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;--&gt; alpha: &#34;</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></div></details>
+<pre><code>--&gt; alpha:  2.541634351446927 
+</code></pre>
+<details>
+<summary>Code</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;--&gt; beta: &#34;</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></div></details>
+<pre><code>--&gt; beta:  1.4804305843764871 
+</code></pre>
+<h3 class="relative group">Visualização gráfica 
+    <div id="visualização-gráfica" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#visualiza%c3%a7%c3%a3o-gr%c3%a1fica" aria-label="Âncora">#</a>
+    </span>        
+    
+</h3>
+<p>Vamos agorar comparar graficamente as estimativas obtidas pelos métodos de otimização (BFGS) considerando as bibliotecas fornecidas nas três linguages. Para uma melhor visualização, utilizaremos o gráfico de curvas de níveis. Perceba que $\mathcal{L}$ possui como variáveis os parâmetros $\alpha$ e $\beta$, sendo $x$ o conjunto de dados que é fixo. Assim, consiguiremos visualizar em 2D o comportamento de $\mathcal{L}$.</p>
+<p>Para que possamos visualizar graficamente e comparar as estimativas obtidas nas três linguagens, será preciso que o conjunto de dados seja idêntico nos processos de otimização realizados em R, Julia e Python.</p>
+<p>Para acessar o conjunto de dados, clique <a href="dados.csv"  >
+    aqui</a>. O conjunto de dados possui $n = 500$ observações. Ainda continuarei considerando $\alpha = 2.5$ e $\beta = 1.5$.</p>
+<details>
+<summary>Quer ver o código do gráfico? Clique aqui!</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">latex2exp</span><span class="p">)</span>
+
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+
+<span class="n">dados</span> <span class="o">&lt;-</span> <span class="nf">rweibull</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="m">500L</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="m">2.5</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="m">1.5</span><span class="p">)</span>
+
+<span class="n">pdf_weibull</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+  <span class="n">alpha</span><span class="o">/</span><span class="n">beta</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">beta</span><span class="p">)</span><span class="nf">^</span><span class="p">(</span><span class="n">alpha</span><span class="m">-1</span><span class="p">)</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">beta</span><span class="p">)</span><span class="n">^alpha</span><span class="p">)</span>
+
+<span class="c1"># log-verossimilhança</span>
+<span class="n">log_likelihood</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+  <span class="nf">prod</span><span class="p">(</span><span class="nf">pdf_weibull</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">))</span>
+
+<span class="n">vec_log_likelihood</span> <span class="o">&lt;-</span>
+  <span class="nf">Vectorize</span><span class="p">(</span>
+    <span class="n">FUN</span> <span class="o">=</span> <span class="n">log_likelihood</span><span class="p">,</span>
+    <span class="n">vectorize.args</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;alpha&#34;</span><span class="p">,</span> <span class="s">&#34;beta&#34;</span><span class="p">)</span>
+  <span class="p">)</span>
+
+<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">2.4</span><span class="p">,</span> <span class="m">2.87</span><span class="p">,</span> <span class="n">length.out</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">dados</span><span class="p">))</span>
+<span class="n">beta</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1.42</span><span class="p">,</span> <span class="m">1.56</span><span class="p">,</span> <span class="n">length.out</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">dados</span><span class="p">))</span>
+<span class="n">df_contour</span> <span class="o">&lt;-</span> <span class="nf">expand_grid</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+
+<span class="n">df_contour</span> <span class="o">&lt;-</span>
+  <span class="n">df_contour</span> <span class="o">|&gt;</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">z</span> <span class="o">=</span> <span class="nf">vec_log_likelihood</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">dados</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">))</span>
+
+<span class="n">df_contour</span> <span class="o">|&gt;</span>
+  <span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+  <span class="nf">geom_contour_filled</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">beta</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="p">),</span> <span class="n">show.legend</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">ggtitle</span><span class="p">(</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s">&#34;Curvas de níveis da fução de Verossimilhança&#34;</span><span class="p">,</span>
+    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Comparativo R, Python e Julia&#34;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="nf">xlab</span><span class="p">(</span><span class="nf">TeX</span><span class="p">(</span><span class="n">r</span><span class="s">&#39;(\alpha)&#39;</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">ylab</span><span class="p">(</span><span class="nf">TeX</span><span class="p">(</span><span class="n">r</span><span class="s">&#39;(\beta)&#39;</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;Níveis&#34;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">theme</span><span class="p">(</span>
+    <span class="n">plot.title</span>  <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">face</span> <span class="o">=</span> <span class="s">&#34;bold&#34;</span><span class="p">),</span>
+    <span class="n">legend.title</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">face</span> <span class="o">=</span> <span class="s">&#34;bold&#34;</span><span class="p">)</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="c1"># R</span>
+  <span class="nf">geom_point</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="m">2.64276</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="m">1.488277</span> <span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;blue&#34;</span><span class="p">,</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="m">3</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="c1"># Python</span>
+  <span class="nf">geom_point</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="m">2.642850353244295</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="m">1.488271661049081</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;green&#34;</span><span class="p">,</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="m">2.5</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="c1"># Julia</span>
+  <span class="nf">geom_point</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="m">2.642850346755736</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="m">1.4882716649411558</span> <span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;red&#34;</span><span class="p">,</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="m">2</span>
+  <span class="p">)</span>
+</code></pre></div></details>
+<img src="index.markdown_strict_files/figure-markdown_strict/unnamed-chunk-8-1.png" width="768" />
+<p>Perceba que foi obtido ótimas estimativas pelo método BFGS, nas três linguagens. Note que tive que colocar um ponto maior que o outro, para que eles não ficassem totalmente sobrepostos, e assim pudéssemos visualizar.</p>
+<h2 class="relative group">Conclusões 
+    <div id="conclusões" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#conclus%c3%b5es" aria-label="Âncora">#</a>
+    </span>        
+    
+</h2>
+<p>Espero que esse post tenha conseguido exemplificar como poderemos implementar a solução de um problema de estimação por máxima verossimilhança, utilizando as linguagens de programação R, Python e Julia. Abordamos conceitos interessantes como funções varargs e funções anônimas, além de algumas estruturas de dados e bibliotecas.</p>
+<p>Nos primeiros códigos, foram observados ótimas estimativas, muito embora elas não são comparáveis, tendo em vista que os conjuntos de dados gerados aleatoriamente foram distintos, por conta da natureza de implementação das funções para geração de números pseudo-aleatórios, disponíveis em cada uma das linguagens comparadas. Foi escolhido fazer dessa forma, para que fosse possível abordar o problema de geração de números pseudo-aleatórios em cada linguagem.</p>
+<p>No fim, foi realizado uma comparação mais justa, onde o mesmo conjunto de dados foi considerado para a produção das curvas de níveis, úteis para visualizar em uma imagem 2D a qualidade das estimativas. No gráfico de curvas de níveis, é possível observar a sobreposição das estimativas obtidas utilizando R, Python e Julia.</p>
+<p>Também é possível perceber que otimizar uma função objetivo é fácil, independentemente da linguagem, sendo possível conseguir códigos concisos e eficientes.</p>
+<p>Todos os gráficos dessa postagem foram construídos em R, através da biblioteca Wickham (2016). Caso queira construir gráficos em Python ou em Julia, considere as seguintes cito a biblioteca <a href="https://seaborn.pydata.org"   target="_blank">
+    seaborn</a> de Python e a biblioteca <a href="https://docs.makie.org/stable/"   target="_blank">
+    Makie</a> de Julia. São apenas sugestões, tendo em vista que há diversas outras alternativas interessantes.</p>
+<h2 class="relative group">Referências 
+    <div id="referências" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#refer%c3%aancias" aria-label="Âncora">#</a>
+    </span>        
+    
+</h2>
+<p>Bezanson, Jeff, Alan Edelman, Stefan Karpinski, and Viral B. Shah. 2017. &ldquo;Julia: A Fresh Approach to Numerical Computing.&rdquo; <em>SIAM Review</em> 59 (1): 65&ndash;98. <a href="https://doi.org/10.1137/141000671"   target="_blank">
+    https://doi.org/10.1137/141000671</a>.</p>
+<p>Li, Changcheng. 2019. &ldquo;JuliaCall: An r Package for Seamless Integration Between r and Julia&rdquo; 4: 1284. <a href="https://doi.org/10.21105/joss.01284"   target="_blank">
+    https://doi.org/10.21105/joss.01284</a>.</p>
+<p>Marinho, Pedro Rafael Diniz, Gauss M. Cordeiro, Fernando Peña Ramírez, Morad Alizadeh, and Marcelo Bourguignon. 2018. &ldquo;The Exponentiated Logarithmic Generated Family of Distributions and the Evaluation of the Confidence Intervals by Percentile Bootstrap.&rdquo; <em>Brazilian Journal of Probability and Statistics</em> 32 (2). <a href="https://doi.org/10.1214/16-bjps343"   target="_blank">
+    https://doi.org/10.1214/16-bjps343</a>.</p>
+<p>R Core Team. 2022. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/"   target="_blank">
+    https://www.R-project.org/</a>.</p>
+<p>Rossum, Guido van. 2010. &ldquo;Python 3000.&rdquo; In, 313&ndash;15. Apress. <a href="https://doi.org/10.1007/978-1-4302-2758-8_17"   target="_blank">
+    https://doi.org/10.1007/978-1-4302-2758-8_17</a>.</p>
+<p>Ushey, Kevin, JJ Allaire, and Yuan Tang. 2022. &ldquo;Reticulate: Interface to &lsquo;Python&rsquo;.&rdquo; <a href="https://CRAN.R-project.org/package=reticulate"   target="_blank">
+    https://CRAN.R-project.org/package=reticulate</a>.</p>
+<p>Wickham, Hadley. 2016. &ldquo;Ggplot2: Elegant Graphics for Data Analysis.&rdquo; <a href="https://ggplot2.tidyverse.org"   target="_blank">
+    https://ggplot2.tidyverse.org</a>.</p>
+
+        </div>
+                
+        
+
+        
+  
+  <section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+    
+      
+      <a
+      target="_blank"
+      class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+      href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://enigma-de-ufpb.github.io/posts/comparando_linguagens/&amp;title=Estima%c3%a7%c3%a3o%20por%20m%c3%a1xima%20verossimilhan%c3%a7a%20em%20R,%20Julia%20e%20Python"
+      title="Compartilhar pelo LinkedIn"
+      aria-label="Compartilhar pelo LinkedIn"
+      >
+      
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+
+  </span>
+
+
+    </a>
+      
+    
+      
+      <a
+      target="_blank"
+      class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+      href="https://twitter.com/intent/tweet/?url=https://enigma-de-ufpb.github.io/posts/comparando_linguagens/&amp;text=Estima%c3%a7%c3%a3o%20por%20m%c3%a1xima%20verossimilhan%c3%a7a%20em%20R,%20Julia%20e%20Python"
+      title="Tweet no Twitter"
+      aria-label="Tweet no Twitter"
+      >
+      
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+  </span>
+
+
+    </a>
+      
+    
+      
+      <a
+      target="_blank"
+      class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+      href="https://reddit.com/submit/?url=https://enigma-de-ufpb.github.io/posts/comparando_linguagens/&amp;resubmit=true&amp;title=Estima%c3%a7%c3%a3o%20por%20m%c3%a1xima%20verossimilhan%c3%a7a%20em%20R,%20Julia%20e%20Python"
+      title="Postar no Reddit"
+      aria-label="Postar no Reddit"
+      >
+      
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"/></svg>
+
+  </span>
+
+
+    </a>
+      
+    
+      
+      <a
+      target="_blank"
+      class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+      href="https://pinterest.com/pin/create/bookmarklet/?url=https://enigma-de-ufpb.github.io/posts/comparando_linguagens/&amp;description=Estima%c3%a7%c3%a3o%20por%20m%c3%a1xima%20verossimilhan%c3%a7a%20em%20R,%20Julia%20e%20Python"
+      title="Pin no Pinterest"
+      aria-label="Pin no Pinterest"
+      >
+      
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M496 256c0 137-111 248-248 248-25.6 0-50.2-3.9-73.4-11.1 10.1-16.5 25.2-43.5 30.8-65 3-11.6 15.4-59 15.4-59 8.1 15.4 31.7 28.5 56.8 28.5 74.8 0 128.7-68.8 128.7-154.3 0-81.9-66.9-143.2-152.9-143.2-107 0-163.9 71.8-163.9 150.1 0 36.4 19.4 81.7 50.3 96.1 4.7 2.2 7.2 1.2 8.3-3.3.8-3.4 5-20.3 6.9-28.1.6-2.5.3-4.7-1.7-7.1-10.1-12.5-18.3-35.3-18.3-56.6 0-54.7 41.4-107.6 112-107.6 60.9 0 103.6 41.5 103.6 100.9 0 67.1-33.9 113.6-78 113.6-24.3 0-42.6-20.1-36.7-44.8 7-29.5 20.5-61.3 20.5-82.6 0-19-10.2-34.9-31.4-34.9-24.9 0-44.9 25.7-44.9 60.2 0 22 7.4 36.8 7.4 36.8s-24.5 103.8-29 123.2c-5 21.4-3 51.6-.9 71.2C65.4 450.9 0 361.1 0 256 0 119 111 8 248 8s248 111 248 248z"/></svg>
+
+  </span>
+
+
+    </a>
+      
+    
+      
+      <a
+      target="_blank"
+      class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+      href="https://www.facebook.com/sharer/sharer.php?u=https://enigma-de-ufpb.github.io/posts/comparando_linguagens/&amp;quote=Estima%c3%a7%c3%a3o%20por%20m%c3%a1xima%20verossimilhan%c3%a7a%20em%20R,%20Julia%20e%20Python"
+      title="Compartilhar pelo Facebook"
+      aria-label="Compartilhar pelo Facebook"
+      >
+      
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+
+  </span>
+
+
+    </a>
+      
+    
+      
+      <a
+      target="_blank"
+      class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+      href="mailto:?body=https://enigma-de-ufpb.github.io/posts/comparando_linguagens/&amp;subject=Estima%c3%a7%c3%a3o%20por%20m%c3%a1xima%20verossimilhan%c3%a7a%20em%20R,%20Julia%20e%20Python"
+      title="Enviar por email"
+      aria-label="Enviar por email"
+      >
+      
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+
+  </span>
+
+
+    </a>
+      
+    
+      
+      <a
+      target="_blank"
+      class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+      href="https://api.whatsapp.com/send?text=https://enigma-de-ufpb.github.io/posts/comparando_linguagens/&amp;resubmit=true&amp;title=Estima%c3%a7%c3%a3o%20por%20m%c3%a1xima%20verossimilhan%c3%a7a%20em%20R,%20Julia%20e%20Python"
+      title=""
+      aria-label=""
+      >
+      
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+
+  </span>
+
+
+    </a>
+      
+    
+      
+      <a
+      target="_blank"
+      class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+      href="https://t.me/share/url?url=https://enigma-de-ufpb.github.io/posts/comparando_linguagens/&amp;resubmit=true&amp;title=Estima%c3%a7%c3%a3o%20por%20m%c3%a1xima%20verossimilhan%c3%a7a%20em%20R,%20Julia%20e%20Python"
+      title=""
+      aria-label=""
+      >
+      
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z"/></svg>
+
+  </span>
+
+
+    </a>
+      
+    
+  </section>
+
+
+        
+
+
+  
+      </div>
+     
+     <script>
+        var oid = "views_posts\/comparando_linguagens\/index.md"
+        var oid_likes = "likes_posts\/comparando_linguagens\/index.md"
+      </script>
+      
+      
+      <script type="text/javascript" src="/js/page.min.5324517abf3942a5e12fb1067279ecb9e567b2b2e138bd95925b32ff28dd9144c9749ed04c2c448a7f51e2e3b8ab6351cebe4d2de96c59e36ca33e51da37be4a.js" integrity="sha512-UyRRer85QqXhL7EGcnnsueVnsrLhOL2Vklsy/yjdkUTJdJ7QTCxEin9R4uO4q2NRzr5NLelsWeNsoz5R2je&#43;Sg=="></script>
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/serie_de_taylor/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Série de Taylor, código espaguete e outras coisas</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2022-10-06 00:00:00 &#43;0000 UTC">6 de Janeiro de 2022</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Ir para o topo" title="Ir para o topo">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2" href="/tags/"
+            title="Tags">Tags</a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      © 2023 Enigma, <a href="https://www.ufpb.br/de">Departamento de Estatística - UFPB</a> 💻
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Movido por <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.e6f8b83d4954ef35ac571571d50867170bee9505dbf4025dd412e1db94658e491c84db93d01b16b142e8b0a4a17dfddc4d170b99be44acfd88fe10ac276d23c8.js" integrity="sha512-5vi4PUlU7zWsVxVx1QhnFwvulQXb9AJd1BLh25RljkkchNuT0BsWsULosKShff3cTRcLmb5ErP2I/hCsJ20jyA=="></script>
+  
+  
+</footer><div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="https://enigma-de-ufpb.github.io/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Pesquisar"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Fechar (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>

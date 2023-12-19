@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://enigma-de-ufpb.github.io/sitemap.xml
