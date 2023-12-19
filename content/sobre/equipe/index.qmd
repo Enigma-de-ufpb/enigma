@@ -1,0 +1,33 @@
+---
+title: "Membros"
+draft: false
+
+showDate : false
+showDateUpdated : false
+showHeadingAnchors : false
+showPagination : false
+showReadingTime : false
+showTableOfContents : true
+showAuthor: false
+showTaxonomies : false 
+showWordCount : false
+showSummary : false
+sharingLinks : false
+showEdit: false
+showViews: false
+showLikes: false
+layoutBackgroundHeaderSpace: false
+---
+
+::: {layout-ncol=3}
+
+![Gabriel de Jesus Pereira](gabriel.png)
+Graduando no curso de estatística da UFPB com preferência pela área de modelagem estatística e prob. . Programador em R, Python e Elixir.
+
+![Paulo R. S. Campana](paulo.png)
+Graduando no curso de estatística - UFPB com preferência pela área de modelagem estatística e simulação. Programador em R, C e Zig.
+
+![Rafhael Aurélio da Silva](rafhael.png)
+Graduando no curso de estatística da UFPB com preferência pela área "citar área". Programador em R.
+
+:::

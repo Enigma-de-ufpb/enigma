@@ -20,7 +20,7 @@
 
 [[main]]
   name = "Objetivos"
-  parent = "Sobre"
+  parent = "Sobre" 
   pageRef = "objetivos"
   weight = 2
 
@@ -33,7 +33,7 @@
 [[main]]
   name = "Equipe"
   parent = "Sobre"
-  pageRef = "aquipe"
+  pageRef = "equipe"
   weight = 4
 
 [[main]]

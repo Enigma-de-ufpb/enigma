@@ -20,8 +20,6 @@ cardView: false
 cardViewScreenWidth: false
 ---
 
-# Orientadores
-
 ## Prof. Dr. Eufrásio de Andrade Lima Neto
 
 Graduado em Estatística pela Universidade Federal de Pernambuco (1998), possui mestrado em Estatística pela Universidade Federal de Pernambuco (2001) e doutorado em Ciências da Computação pela Universidade Federal de Pernambuco (2008). Atualmente, é Professor Associado III do Departamento de Estatística na UFPB com participação no Programa de Pós-Graduação Matemática e Modelagem Computacional. Atua principalmente nos seguintes temas: Modelagem Estatística, Aprendizagem de Máquina, Regressão Robusta, Modelos Lineares Generalizados, Análise de Dados Simbólicos, Clusterwise Regression e Métodos baseado em Kernel.
@@ -44,7 +42,6 @@ Marcelo R. P. Ferreira obteve o grau de Doutor em Ciência da Computação em 20
 
 ## Prof. Dr. Pedro Rafael Diniz Marinho
 
-![Pedro Rafael](img/pedro.jpeg)
-
-
 Possui bacharelado em estatística pela Universidade Federal da Paraíba - UFPB (2010), mestrado em estatística pela Universidade Federal de Pernambuco - UFPE (2014) e doutorado em estatística pela UFPE (2016). No mestrado e doutorado, foi bolsista da Fundação de Amparo a Ciência e Tecnologia do Estado de Pernambuco - FACEPE. Atualmente é professor Adjunto do Departamento de Estatística da Universidade Federal da Paraíba - UFPB e membro permanente do Programa de Pós-graduação em Modelagem Matemática e Computacional - PPGMMC vinculado ao Centro de Informática da UFPB. Possui interesses nas seguintes áreas: Ciência de Dados, Simulações de Monte Carlo, Métodos Bootstrap, Métodos Estatísticos Computacionalmente Intensivos, Computação Paralela, Construção de Softwares para a Estatística, Inferência Estatística Clássica e Probabilidade.
+
+![Pedro Rafael](img/pedro.jpeg)

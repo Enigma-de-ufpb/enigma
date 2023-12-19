@@ -25,6 +25,7 @@ buildFuture = false
   tag = "tags"
   category = "categories"
   author = "authors"
+  equipe = "equipe"
   series = "series"
 
 [sitemap]
