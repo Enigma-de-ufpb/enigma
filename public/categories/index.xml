@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Enigma</title>
+    <link>https://enigma-de-ufpb.github.io/categories/</link>
+    <description>Recent content in Categories on Enigma</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>© 2023 Enigma, [Departamento de Estatística - UFPB](https://www.ufpb.br/de) :computer:</copyright>
+    <lastBuildDate>Thu, 06 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://enigma-de-ufpb.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>code</title>
+      <link>https://enigma-de-ufpb.github.io/categories/code/</link>
+      <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://enigma-de-ufpb.github.io/categories/code/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>news</title>
+      <link>https://enigma-de-ufpb.github.io/categories/news/</link>
+      <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://enigma-de-ufpb.github.io/categories/news/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://enigma-de-ufpb.github.io/categories/r/</link>
+      <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://enigma-de-ufpb.github.io/categories/r/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Julia</title>
+      <link>https://enigma-de-ufpb.github.io/categories/julia/</link>
+      <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://enigma-de-ufpb.github.io/categories/julia/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://enigma-de-ufpb.github.io/categories/python/</link>
+      <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://enigma-de-ufpb.github.io/categories/python/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>
