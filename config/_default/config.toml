@@ -26,6 +26,7 @@ googleAnalytics = "G-FJB7CZCTXQ"
   category = "categories"
   author = "authors"
   equipe = "equipe"
+  post = "posts"
   series = "series"
 
 [sitemap]
