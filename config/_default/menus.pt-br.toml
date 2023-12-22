@@ -34,19 +34,12 @@
   pageRef = "posts"
   weight = 2
 
-# Submenus
-
 [[main]]
-  name = "Tutoriais"
-  parent = "Materiais"
-  pageRef = "tutoriais"
-  weight = 1
-
-[[main]]
-  name = "Livros"
-  parent = "Materiais"
-  pageRef = "livros"
+  name = "Materiais"
+  pageRef = "materiais"
   weight = 2
+
+# Submenus
 
 #[[main]]
 #  name = "example sub-menu 2"
