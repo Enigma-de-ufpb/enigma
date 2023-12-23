@@ -8,7 +8,7 @@ showPagination: false
 showReadingTime: false
 showTableOfContents: true
 showAuthor: false
-showTaxonomies: false 
+showTaxonomies: false
 showWordCount: false
 showSummary: false
 sharingLinks: false
