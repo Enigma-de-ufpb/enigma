@@ -1,2 +1,5 @@
 [[imports]]
 path = "github.com/nunocoracao/blowfish/v2"
+
+[build.environment]
+  GO_VERSION = "1.21"

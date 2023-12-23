@@ -14,80 +14,32 @@
 # Menus principais
 
 [[main]]
-  name = "Sobre"
-  pageRef = "sobre"
+  name = ""
+  pageRef = "/"
   weight = 1
 
-[[main]]
-  name = "Objetivos"
-  parent = "Sobre"
-  pageRef = "objetivos"
-  weight = 2
-
-[[main]]
-  name = "Orientadores"
-  parent = "Sobre"
-  pageRef = "sobre/orientadores"
-  weight = 3
+#[[main]]
+#  name = "Orientadores"
+#  parent = "Sobre"
+#  pageRef = "sobre/orientadores"
+#  weight = 3
 
 [[main]]
   name = "Equipe"
-  parent = "Sobre"
-  pageRef = "aquipe"
-  weight = 4
-
-[[main]]
-  name = "Projetos"
-  pageRef = "projetos"
+  pageRef = "equipe"
   weight = 2
-
-[[main]]
-  name = "Pesquisa científica"
-  parent = "Projetos"
-  pageRef = "pesquisas"
-  weight = 1
-
-[[main]]
-  name = "Aplicações"
-  parent = "Projetos"
-  pageRef = "aplicacoes"
-  weight = 2
-
-[[main]]
-  name = "Desenvolvimento web"
-  parent = "Projetos"
-  pageRef = "web"
-  weight = 3
-
-[[main]]
-  name = "Bibliotecas computacionais"
-  parent = "Projetos"
-  pageRef = "bibliotecas"
-  weight = 4
-
-[[main]]
-  name = "Materiais"
-  pageRef = "materiais"
-  weight = 3
 
 [[main]]
   name = "Postagens"
   pageRef = "posts"
-  weight = 4
+  weight = 2
+
+[[main]]
+  name = "Materiais"
+  pageRef = "materiais"
+  weight = 2
 
 # Submenus
-
-[[main]]
-  name = "Tutoriais"
-  parent = "Materiais"
-  pageRef = "tutoriais"
-  weight = 1
-
-[[main]]
-  name = "Livros"
-  parent = "Materiais"
-  pageRef = "livros"
-  weight = 2
 
 #[[main]]
 #  name = "example sub-menu 2"
