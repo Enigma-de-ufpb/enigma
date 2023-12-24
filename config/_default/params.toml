@@ -115,6 +115,7 @@ smartTOCHideUnfocusedChildren = false
   cardViewScreenWidth = true
 
 [firebase]
+<<<<<<< HEAD
   apiKey = "AIzaSyCwK3_3DUz5e5rU1E6YJJSM30-zkX5df1w"
   authDomain = "enigma-c9785.firebaseapp.com"
   projectId = "enigma-c9785"
@@ -124,6 +125,15 @@ smartTOCHideUnfocusedChildren = false
   measurementId = "G-H6FHBTVL49"
 
 
+=======
+  apiKey = "AIzaSyC2ug12EkeUxlkcPyxzIaDTEFc893Z7qJU"
+  authDomain = "contagemviews.firebaseapp.com"
+  projectId = "contagemviews"
+  storageBucket = "contagemviews.appspot.com"
+  messagingSenderId = "42952232999"
+  appId = "1:42952232999:web:8783f24f0b5ffa854f7e02"
+  measurementId = "G-0RK7FCM96K"
+>>>>>>> refs/remotes/origin/main
 
 [fathomAnalytics]
   # site = "ABC12345"
