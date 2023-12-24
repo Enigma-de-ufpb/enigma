@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Materiais on Enigma</title>
+    <link>https://enigma-de-ufpb.github.io/materiais/</link>
+    <description>Recent content in Materiais on Enigma</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>© 2023 Enigma, [Departamento de Estatística - UFPB](https://www.ufpb.br/de) :computer:</copyright>
+    <atom:link href="https://enigma-de-ufpb.github.io/materiais/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

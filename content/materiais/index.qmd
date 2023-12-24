@@ -1,6 +1,5 @@
 ---
 draft: false
-
 showDate : false
 showDateUpdated: false
 showHeadingAnchors: false
@@ -8,7 +7,7 @@ showPagination: false
 showReadingTime: false
 showTableOfContents: true
 showAuthor: false
-showTaxonomies: false 
+showTaxonomies: false
 showWordCount: false
 showSummary: false
 sharingLinks: false
@@ -89,7 +88,7 @@ Você irá aprender:
 
 Python for Data Analysis (Wes Mckinney, 2012) está preocupado com toda a parte de manipulação, processamento e limpeza de dados utilizando a lingaugem Python. Ainda, pode ser considerado como uma introdução à computação científica em Python, fazendo uso de bibliotecas que tem isso como objetivo.
 
-Neste livro você irá aprender: 
+Neste livro você irá aprender:
 
 - O básico e avançado da biblioteca Numpy para computação científica em Python.
 - Manipulação, limpeza e processamento de dados com a biblioteca Pandas.
