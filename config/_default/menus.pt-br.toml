@@ -17,12 +17,12 @@
 [[main]]
   name = "Postagens"
   pageRef = "posts"
-  weight = 10
+  weight = 1
 
 [[main]]
   name = "Equipe"
   pageRef = "equipe"
-  weight = 20
+  weight = 2
 
 #[[main]]
 #  name = "Materiais"
