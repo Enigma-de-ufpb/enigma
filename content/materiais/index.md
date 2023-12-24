@@ -33,6 +33,10 @@ layoutBackgroundHeaderSpace: false
         margin-bottom: 25px;
     }
 
+    .special {
+      margin-top: 60px;
+    }
+
 </style>
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -101,4 +105,14 @@ Neste livro você aprendera:
 -   Utilização do paradigma funcional para resolução de problemas;
 -   Metaprogramação.
 
-# Menções especiais
+<h1 class="special">Menções especiais</h1>
+
+# 
+
+<a href="https://prdm0.github.io/curso_python/#/title-slide"> <h2>Programação Estatística I (Python)</h2> </a>
+
+Programação Estatística I (Python) é um material disponibilizado gratuitamente pelo Prof. Dr. Pedro Rafael D. Marinho do departamento de estatística da Universidade Federal da Paraíba. O curso dá uma introdução à linguagem de programação Python, além de citar tópicos especiais.
+
+<a href="https://prdm0.github.io/curso_ml/#/title-slide"> <h2>Machine Learning</h2> </a>
+
+Machine Learning é mais um material disponibilizado gratuitamente pelo Prof. Dr. Pedro Rafael Diniz Marinho do departamento de estatística da Universidade Federal da Paraíba. O dá uma introdução à aprendizagem de máquina, falando de cada um de seus detalhes, além de ensinar a parte matemática, deixada de lado por tantos cursos.
