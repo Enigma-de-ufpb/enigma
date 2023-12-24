@@ -13,11 +13,6 @@
 
 # Menus principais
 
-[[main]]
-  name = ""
-  pageRef = "/"
-  weight = 1
-
 #[[main]]
 #  name = "Orientadores"
 #  parent = "Sobre"
@@ -25,19 +20,20 @@
 #  weight = 3
 
 [[main]]
-  name = "Equipe"
-  pageRef = "equipe"
-  weight = 2
+  name = "Postagens"
+  pageRef = "posts/"
+  weight = 20
+
 
 [[main]]
-  name = "Postagens"
-  pageRef = "posts"
-  weight = 3
+  name = "Equipe"
+  pageRef = "equipe/"
+  weight = 10
 
 [[main]]
   name = "Materiais"
-  pageRef = "materiais"
-  weight = 4
+  pageRef = "materiais/"
+  weight = 30
 
 # Submenus
 
