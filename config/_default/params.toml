@@ -115,15 +115,13 @@ smartTOCHideUnfocusedChildren = false
   cardViewScreenWidth = true
 
 [firebase]
-  apiKey = "AIzaSyB_kt_CPHOxujD8n7sLRYB5aN91774TzZk"
-  authDomain = "liga-39bee.firebaseapp.com"
-  projectId = "liga-39bee"
-  storageBucket =  "liga-39bee.appspot.com"
-  messagingSenderId = "231690121745"
-  appId = "1:231690121745:web:ec04d3db888933c83537b0"
-  measurementId = "G-FJB7CZCTXQ"
-
-
+  apiKey = "AIzaSyC2ug12EkeUxlkcPyxzIaDTEFc893Z7qJU"
+  authDomain = "contagemviews.firebaseapp.com"
+  projectId = "contagemviews"
+  storageBucket = "contagemviews.appspot.com"
+  messagingSenderId = "42952232999"
+  appId = "1:42952232999:web:8783f24f0b5ffa854f7e02"
+  measurementId = "G-0RK7FCM96K"
 
 [fathomAnalytics]
   # site = "ABC12345"
