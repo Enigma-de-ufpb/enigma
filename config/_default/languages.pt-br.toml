@@ -16,7 +16,7 @@ title = "Enigma"
 [author]
    name = "Enigma"
    image = "img/nova_logo.jpg"
-   headline = "Liga de programação aplicada à ciência de dados"
+   headline = "Enigma é uma liga acadêmica baseada no Departamento de Estatística (DE) da Universidade Federal da Paraíba (UFPB) voltada para estatística, programação e ciência de dados. A liga não tem fins lucrativos e tem como objetivos a divulgação científica da ciência de dados, materiais gratuitos para o aprendizado, aplicação constante dos conhecimentos e colaboração em projetos da área."
    bio = "Liga de programação aplicada à ciência de dados do Departamento de Estatística - DE da Universidade Federal da Paraíba - UFPB."
    links = [
 #     { email = "mailto:hello@your_domain.com" },

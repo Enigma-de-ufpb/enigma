@@ -123,6 +123,7 @@ smartTOCHideUnfocusedChildren = false
   appId = "1:42952232999:web:8783f24f0b5ffa854f7e02"
   measurementId = "G-0RK7FCM96K"
 
+
 [fathomAnalytics]
   # site = "ABC12345"
   # domain = "llama.yoursite.com"
