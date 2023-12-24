@@ -32,12 +32,12 @@
 [[main]]
   name = "Postagens"
   pageRef = "posts"
-  weight = 2
+  weight = 3
 
 [[main]]
   name = "Materiais"
   pageRef = "materiais"
-  weight = 2
+  weight = 4
 
 # Submenus
 

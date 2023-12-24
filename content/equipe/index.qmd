@@ -8,7 +8,7 @@ showPagination: false
 showReadingTime: false
 showTableOfContents: true
 showAuthor: false
-showTaxonomies: false 
+showTaxonomies: false
 showWordCount: false
 showSummary: false
 sharingLinks: false
@@ -67,13 +67,13 @@ layoutBackgroundHeaderSpace: false
     }
 
     .text-container p {
-      margin-bottom: 10px; 
+      margin-bottom: 10px;
     }
 
   .members-heading {
     margin-top: 100px;
   }
-    
+
 </style>
 
 <div class="content">
@@ -97,7 +97,7 @@ layoutBackgroundHeaderSpace: false
       Graduação em Estatística (UFPB) e mestrado e doutorado em Estatística (UFPE). Foi bolsista da Fundação de Amparo a Ciência e Tecnologia do Estado de Pernambuco. É professor Adjunto do Departamento de Estatística da UFPB com participação no Programa de Pós-graduação em Modelagem Matemática e Computacional. Atua em: Ciência de Dados, Métodos Estatísticos Computacionalmente Intensivos, Construção de Softwares pa ra a Estatística, Inferência Estatística Clássica e Probabilidade.
     </p>
   </div>
-  <img src="pedro.jpeg" alt="Image 2">  
+  <img src="pedro.jpeg" alt="Image 2">
 </div>
 
 <div class="image-container">
@@ -107,7 +107,7 @@ layoutBackgroundHeaderSpace: false
       Graduação e mestrado em Estatística (UFPE), douturado em Ciência da Computação (UFPB) e pós-douturado na RWTH Aachen University, Alemanha. É professor Associado I do Departamento de statística da UFPB com participação no Programa de Pós-Graduação em Modelos de Decisão e Saúde. Atua em: Aprendizado de Máquina, Ciência de Dados e Estatística Computacional, Métodos não-paramétricos e análise de dados simbólicos.
     </p>
   </div>
-  <img src="marcelo.jpeg" alt="Image 2">  
+  <img src="marcelo.jpeg" alt="Image 2">
 </div>
 
 <div class="image-container">
@@ -117,11 +117,11 @@ layoutBackgroundHeaderSpace: false
       Graduação em Estatística (UFPE), mestrado e doutorado em Biometria e Estatística Aplicada (UFRPE), pós-doutorado com o professor pesquisador Fábio Mariano Bayer (UFSM). É Professor Associado I do Departamento de Estatística da UFPB com participação no Programa de Pós-Graduação em Modelos de Decisão e Saúde. Atua em: controle estatístico de processos e modelagem.
     </p>
   </div>
-  <img src="luiz.jpeg" alt="Image 2">  
+  <img src="luiz.jpeg" alt="Image 2">
 </div>
 
 <h1 class="members-heading">Equipe</h1>
-    
+
 <div class="image-container-members">
     <div class="person">
         <img src="paulo.png" alt="Paulo R. S. Campana">
