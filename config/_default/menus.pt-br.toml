@@ -24,7 +24,7 @@
   pageRef = "equipe"
   weight = 2
 
-#[[main]]
-#  name = "Materiais"
-#  pageRef = "materiais"
-#  weight = 30
+[[main]]
+  name = "Materiais"
+  pageRef = "materiais"
+  weight = 30
