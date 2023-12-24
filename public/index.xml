@@ -29,13 +29,23 @@
     </item>
     
     <item>
-      <title>Orientadores</title>
-      <link>https://enigma-de-ufpb.github.io/sobre/orientadores/</link>
-      <pubDate>Fri, 06 Apr 2012 00:00:00 +0000</pubDate>
+      <title></title>
+      <link>https://enigma-de-ufpb.github.io/equipe/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://enigma-de-ufpb.github.io/sobre/orientadores/</guid>
-      <description>Orientadores   Prof.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://enigma-de-ufpb.github.io/sobre/orientadores/feature.png" />
+      <guid>https://enigma-de-ufpb.github.io/equipe/</guid>
+      <description>body { display: flex; align-items: center; } .</description>
+      
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://enigma-de-ufpb.github.io/materiais/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://enigma-de-ufpb.github.io/materiais/</guid>
+      <description>body { display: flex; align-items: center; } img { margin-left: 200px; margin-top: 40px; } .</description>
+      
     </item>
     
   </channel>
