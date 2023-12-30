@@ -81,7 +81,7 @@ layoutBackgroundHeaderSpace: false
 
 <div class="image-container">
   <div class="text-container">
-    <h2>Prof. Dr. Eufráio de Andrade Lima Neto</h2>
+    <h2>Prof. Dr. Eufrásio de Andrade Lima Neto</h2>
     <p>
       Graduação e mestrado em Estatística (UFPE) e doutorado em Ciências da computação (UFPE). É Professor Associado III do Departamento de Estatística da UFPB com participação no Programa de Pós-Graduação Matemática e Modelagem Computacional. Atua em: Modelagem Estatística, Aprendizagem de Máquina, Regressão Robusta, Modelos Lineares Generalizados, Análise de Dados Simbólicos, Regressão Clusterwise e Métodos baseado em Kernel.
     </p>
