@@ -111,7 +111,7 @@ layoutBackgroundHeaderSpace: false
 
 <div class="image-container">
   <div class="text-container">
-    <h2>Prof. Dr. Pedro Rafael Diniz Marinho</h2>
+    <h2>Prof. Dr. Pedro Rafael Diniz Marinh</h2>
     <p>
       Graduação em Estatística (UFPB) e mestrado e doutorado em Estatística (UFPE). Foi bolsista da Fundação de Amparo a Ciência e Tecnologia do Estado de Pernambuco. É professor Adjunto do Departamento de Estatística da UFPB com participação no Programa de Pós-graduação em Modelagem Matemática e Computacional. Atua em: Ciência de Dados, Métodos Estatísticos Computacionalmente Intensivos, Construção de Softwares pa ra a Estatística, Inferência Estatística Clássica e Probabilidade.
     </p>
