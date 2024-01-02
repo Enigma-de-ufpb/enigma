@@ -20,8 +20,19 @@
 
 [[main]]
   name = "Materiais"
-  pageRef = "materiais"
-  weight = 30
+  weight = 3
+
+[[main]]
+  name = "Materiais Enigma"
+  parent = "Materiais"
+  pageRef = "materiais/materiais-enigma"
+  weight = 3
+
+[[main]]
+  name = "Outros Materiais"
+  parent = "Materiais"
+  weight = 3
+  pageRef = "/materiais/materiais-complementares"
 
 [[main]]
   name = "Postagens"

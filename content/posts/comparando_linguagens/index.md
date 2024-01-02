@@ -542,7 +542,7 @@ print("--> alpha: ", alpha, "\n")
 
 </details>
 
-    --> alpha:  2.541634351446927 
+    --> alpha:  2.5416342784448855 
 
 <details>
 <summary>Code</summary>
@@ -553,7 +553,7 @@ print("--> beta: ", beta, "\n")
 
 </details>
 
-    --> beta:  1.4804305843764871 
+    --> beta:  1.4804305714229347 
 
 ### Visualização gráfica
 
