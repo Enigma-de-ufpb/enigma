@@ -92,12 +92,12 @@ layoutBackgroundHeaderSpace: false
 
 <div class="image-container">
   <div class="text-container">
-    <h2>Prof. Dr. Pedro Rafael Diniz Marinho</h2>
+    <h2>Prof. Dr. Luiz Medeiros de Araujo Lima Filho</h2>
     <p>
-      Graduação em Estatística (UFPB) e mestrado e doutorado em Estatística (UFPE). Foi bolsista da Fundação de Amparo a Ciência e Tecnologia do Estado de Pernambuco. É professor Adjunto do Departamento de Estatística da UFPB com participação no Programa de Pós-graduação em Modelagem Matemática e Computacional. Atua em: Ciência de Dados, Métodos Estatísticos Computacionalmente Intensivos, Construção de Softwares pa ra a Estatística, Inferência Estatística Clássica e Probabilidade.
+      Graduação em Estatística (UFPE), mestrado e doutorado em Biometria e Estatística Aplicada (UFRPE), pós-doutorado com o professor pesquisador Fábio Mariano Bayer (UFSM). É Professor Associado I do Departamento de Estatística da UFPB com participação no Programa de Pós-Graduação em Modelos de Decisão e Saúde. Atua em: controle estatístico de processos e modelagem.
     </p>
   </div>
-  <img src="pedro.jpeg" alt="Image 2">
+  <img src="luiz.jpeg" alt="Image 2">
 </div>
 
 <div class="image-container">
@@ -112,13 +112,15 @@ layoutBackgroundHeaderSpace: false
 
 <div class="image-container">
   <div class="text-container">
-    <h2>Prof. Dr. Luiz Medeiros de Araujo Lima Filho</h2>
+    <h2>Prof. Dr. Pedro Rafael Diniz Marinho</h2>
     <p>
-      Graduação em Estatística (UFPE), mestrado e doutorado em Biometria e Estatística Aplicada (UFRPE), pós-doutorado com o professor pesquisador Fábio Mariano Bayer (UFSM). É Professor Associado I do Departamento de Estatística da UFPB com participação no Programa de Pós-Graduação em Modelos de Decisão e Saúde. Atua em: controle estatístico de processos e modelagem.
+      Graduação em Estatística (UFPB) e mestrado e doutorado em Estatística (UFPE). Foi bolsista da Fundação de Amparo a Ciência e Tecnologia do Estado de Pernambuco. É professor Adjunto do Departamento de Estatística da UFPB com participação no Programa de Pós-graduação em Modelagem Matemática e Computacional. Atua em: Ciência de Dados, Métodos Estatísticos Computacionalmente Intensivos, Construção de Softwares pa ra a Estatística, Inferência Estatística Clássica e Probabilidade.
     </p>
   </div>
-  <img src="luiz.jpeg" alt="Image 2">
+  <img src="pedro.jpeg" alt="Image 2">
 </div>
+
+
 
 <h1 class="members-heading">Equipe</h1>
 
@@ -137,6 +139,14 @@ layoutBackgroundHeaderSpace: false
         <img src="rafhael.png" alt="Rafhael Aurélio da Silva">
         <p>Rafhael Aurélio da Silva</p>
         <p>Graduando no curso de estatística - UFPB com preferência pela área "modelagem alguma coisa ou algum interesse além da estatística". Programador em R.</p>
+    </div>
+</div>
+
+<div class="image-container-members">
+    <div class="person">
+        <img src="nielson.png" alt="Rafhael Aurélio da Silva">
+        <p>Nielson Alexandre de Almeida Dantas Júnior</p>
+        <p>Graduando no curso de estatística - UFPB com preferência pela área de aprendizagem de máquina e modelagem estatística. Programador em R.</p>
     </div>
 </div>
 </div>
