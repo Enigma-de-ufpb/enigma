@@ -59,11 +59,11 @@ layoutBackgroundHeaderSpace: false
 
 <img src="https://prdm0.github.io/aulas_computacional/images/logo_livro.png" width="250" />
 
-Estatística Computacional é um livro escrito pelo Prof. Dr. Pedro Rafael D. Marinho do departamento de estatística para ministrar o curso de estatística computacional do departamento de estaística da UFPB. O livro aborda simulação de Monte Carlo, geração de números pseudo-aleatórios, otimização utilizando Newton-Raphson e muitos outros métodos de otimização. ALém disso, livro dá uma introdução breve sobre tecnologias como Git, Github e R
+Estatística Computacional é um livro escrito pelo Prof. Dr. Pedro Rafael Diniz Marinho do departamento de estatística para ministrar o curso de estatística computacional. O livro aborda simulação de Monte Carlo, geração de números pseudo-aleatórios, otimização utilizando Newton-Raphson e muitos outros métodos de otimização. ALém disso, livro dá uma introdução breve sobre tecnologias como Git, Github e R
 
 <a href="https://prdm0.github.io/curso_python/#/title-slide"> <h2>Programação Estatística I (Python)</h2> </a>
 
-Programação Estatística I (Python) é um material disponibilizado gratuitamente pelo Prof. Dr. Pedro Rafael D. Marinho do departamento de estatística da Universidade Federal da Paraíba. O curso dá uma introdução à linguagem de programação Python, além de citar tópicos especiais.
+Programação Estatística I (Python) é um material disponibilizado gratuitamente pelo Prof. Dr. Pedro Rafael Diniz Marinho do departamento de estatística da Universidade Federal da Paraíba. O curso dá uma introdução à linguagem de programação Python, além de citar tópicos especiais.
 
 <a href="https://prdm0.github.io/curso_ml/#/title-slide"> <h2>Machine Learning</h2> </a>
 
